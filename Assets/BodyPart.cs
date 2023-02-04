@@ -6,10 +6,7 @@ public class BodyPart : MonoBehaviour
 {
     // Start is called before the first frame update
     public float rotation = 0;
-
-    public bool left;
-    public bool right;
-
+    
     public float speedMultiplier;
 
     public bool selected;
@@ -32,21 +29,13 @@ public class BodyPart : MonoBehaviour
         if (selected)
         {
             sprite.color = new Color(1, 0, 0, 1);
-
-            // if (left)
-            // {
-            //     rotation += rotateL * speedMultiplier;
-            // }
-            // if (right)
-            // {
-            //     rotation += rotateR * speedMultiplier;
-            // }
+            rotation += rotateL * speedMultiplier;
         }
         else
         {
             sprite.color = new Color(1, 1, 1, 1);
         }
         transform.localRotation = Quaternion.Euler(0, 0, rotation);
-        
+
     }
 }
