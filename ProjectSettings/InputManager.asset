@@ -35,7 +35,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 0
-    axis: 0
+    axis: 1
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
@@ -496,10 +496,10 @@ InputManager:
     gravity: 3
     dead: 0.001
     sensitivity: 3
-    snap: 0
+    snap: 1
     invert: 0
     type: 2
-    axis: 5
+    axis: 3
     joyNum: 0
   - serializedVersion: 3
     m_Name: VerticalL
@@ -512,9 +512,9 @@ InputManager:
     gravity: 3
     dead: 0.001
     sensitivity: 3
-    snap: 0
+    snap: 1
     invert: 0
     type: 2
-    axis: 5
+    axis: 4
     joyNum: 0
   m_UsePhysicalKeys: 0
