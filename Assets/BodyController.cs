@@ -29,7 +29,7 @@ public class BodyController : MonoBehaviour
         {
             indexL += 1;
         }
-        if (lastAxisL < -.01 && selectL >= -.01)
+        if (lastAxisL > -.01 && selectL <= -.01)
         {
             indexL -= 1;
         }
@@ -37,7 +37,7 @@ public class BodyController : MonoBehaviour
         {
             indexR += 1;
         }
-        if (lastAxisR < -.01 && selectR >= -.01)
+        if (lastAxisR > -.01 && selectR <= -.01)
         {
             indexR -= 1;
         }
