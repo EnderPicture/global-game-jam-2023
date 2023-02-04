@@ -7,12 +7,14 @@ public class BodyPart : MonoBehaviour
     // Start is called before the first frame update
     float rotation = 0;
 
-    public bool right;
     public bool left;
+    public bool right;
 
+    public float speedMultiplier;
 
     void Start()
     {
+        rotation = transform.localRotation.eulerAngles.z;
     }
 
     // Update is called once per frame
@@ -21,13 +23,15 @@ public class BodyPart : MonoBehaviour
         float rotateR = Input.GetAxis("HorizontalR");
         float rotateL = Input.GetAxis("HorizontalL");
 
-        if (right) {
-            rotation += rotateR;
+        if (left)
+        {
+            rotation += rotateL * speedMultiplier;
         }
-        if (left) {
-            rotation += rotateL;
+        if (right)
+        {
+            rotation += rotateR * speedMultiplier;
         }
 
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, rotation);
+        transform.localRotation = Quaternion.Euler(0, 0, rotation);
     }
 }
