@@ -24,22 +24,53 @@ public class BodyController : MonoBehaviour
         float selectR = Input.GetAxis("VerticalR");
         float selectL = Input.GetAxis("VerticalL");
 
-        if (lastAxisL != 1 && selectL == 1)
-        {
 
-        }
-        if (lastAxisL != -1 && selectL == -1)
+        if (lastAxisL < .01 && selectL >= .01)
         {
-
+            indexL += 1;
         }
-        if (lastAxisR != 0 && selectR == 1)
+        if (lastAxisL < -.01 && selectL >= -.01)
         {
-
+            indexL -= 1;
         }
-        if (lastAxisR != -0 && selectR == -1)
+        if (lastAxisR < .01 && selectR >= .01)
         {
-
+            indexR += 1;
         }
+        if (lastAxisR < -.01 && selectR >= -.01)
+        {
+            indexR -= 1;
+        }
+
+
+        if (indexR >= bodyPartsR.Length)
+        {
+            indexR = bodyPartsR.Length - 1;
+        }
+        if (indexR < 0)
+        {
+            indexR = 0;
+        }
+        if (indexL >= bodyPartsL.Length)
+        {
+            indexL = bodyPartsL.Length - 1;
+        }
+        if (indexL < 0)
+        {
+            indexL = 0;
+        }
+
+        foreach (BodyPart bp in bodyPartsL)
+        {
+            bp.selected = false;
+        }
+        foreach (BodyPart bp in bodyPartsR)
+        {
+            bp.selected = false;
+        }
+
+        bodyPartsL[indexL].selected = true;
+        bodyPartsR[indexR].selected = true;
 
 
         lastAxisL = selectL;

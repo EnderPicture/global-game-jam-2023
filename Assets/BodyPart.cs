@@ -12,26 +12,29 @@ public class BodyPart : MonoBehaviour
 
     public float speedMultiplier;
 
+    public bool selected;
+
     void Start()
     {
         rotation = transform.localRotation.eulerAngles.z;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float rotateR = Input.GetAxis("HorizontalR");
         float rotateL = Input.GetAxis("HorizontalL");
 
-        if (left)
+        if (selected)
         {
-            rotation += rotateL * speedMultiplier;
+            if (left)
+            {
+                rotation += rotateL * speedMultiplier;
+            }
+            if (right)
+            {
+                rotation += rotateR * speedMultiplier;
+            }
         }
-        if (right)
-        {
-            rotation += rotateR * speedMultiplier;
-        }
-
         transform.localRotation = Quaternion.Euler(0, 0, rotation);
     }
 }

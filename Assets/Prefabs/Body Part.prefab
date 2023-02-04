@@ -131,4 +131,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: 1
   right: 1
-  speedMultiplier: 0.1
+  speedMultiplier: 5
+  selected: 0
