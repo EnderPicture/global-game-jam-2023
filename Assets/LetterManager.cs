@@ -6,17 +6,18 @@ public class LetterManager : MonoBehaviour
 {   
     private GameObject[] BadColliderList;
     public ColliderScript[] ColliderList;
-    private float NumberOfHitColliders;
-    private float Score;
-    private bool IsLetterComplete;
+    private float NumberOfHitColliders = 0;
+    private float Score = 0;
+    private bool IsLetterComplete = false;
     // Start is called before the first frame update
     void Start()
     {
         NumberOfHitColliders = 0;
-        GameObject[] CollideGameComponent = GameObject.FindGameObjectsWithTag("collider");
         int index = 0;
-        foreach (GameObject Collider in CollideGameComponent) {
-            ColliderList[index] = (Collider.GetComponent<ColliderScript>());
+        ColliderList = new ColliderScript[transform.childCount];
+        foreach (Transform collider in transform) {
+            ColliderList[index] = (collider.GetComponent<ColliderScript>());
+            Debug.Log(ColliderList[index]);
             index = index + 1;
         }
     }
@@ -26,15 +27,20 @@ public class LetterManager : MonoBehaviour
     {
         Score = NumberOfHitColliders / ColliderList.Length;
         NumberOfHitColliders = 0;   
+        Debug.Log(ColliderList.Length);
+        
+
+        foreach (ColliderScript Collider in ColliderList) {
+            if(Collider.HasCollided()) {
+                Debug.Log("HIT!!!!");
+                NumberOfHitColliders = NumberOfHitColliders + 1;
+            }
+        }
         if(NumberOfHitColliders == ColliderList.Length) { 
             //Insert Whatever
             Debug.Log("YOU WIN!");
         }
-        foreach (ColliderScript Collider in ColliderList) {
-            // if(Collider.HasCollided()) {
-            //     NumberOfHitColliders = NumberOfHitColliders + 1;
-            // }
-        }
+        
     }
 
     

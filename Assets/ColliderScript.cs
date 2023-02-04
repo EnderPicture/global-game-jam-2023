@@ -26,6 +26,11 @@ public class ColliderScript : MonoBehaviour
         HasHitBody = false;
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        HasHitBody = true;
+    }
+
     public bool HasCollided() {
         return HasHitBody;
     }
