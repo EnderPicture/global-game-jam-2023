@@ -34,6 +34,7 @@ public class BodyController : MonoBehaviour
 
     private Vector3 oldMousePosition;
     private Vector3 oldPosition;
+    private bool disable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,37 +42,47 @@ public class BodyController : MonoBehaviour
         SetStyle();
     }
 
+    public void disabled() {
+        disable = true;
+        indexClick = -1;
+        currentBodyPart = null;
+        mouseLDown = false;
+        MouseRHit = false;
+    }
+
 
     void Clicked()
     {
-        Vector2 realMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(!disable) {
+            Vector2 realMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            indexClick = indexHovered;
-
-        }
-
-        else if (Input.GetMouseButtonDown(1))
-        {
-            _ray = new Ray(
-                Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                Camera.main.transform.forward);
-
-            if (Physics.Raycast(_ray, out _hit, 1000f))
+            if (Input.GetMouseButtonDown(0))
             {
-                _hit.transform.gameObject.GetComponent<BodyPart>();
-                int i = 0;
-                foreach (BodyPart bp in bodyParts)
+
+                indexClick = indexHovered;
+
+            }
+
+            else if (Input.GetMouseButtonDown(1))
+            {
+                _ray = new Ray(
+                    Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                    Camera.main.transform.forward);
+
+                if (Physics.Raycast(_ray, out _hit, 1000f))
                 {
-                    if (_hit.transform.gameObject.GetComponent<BodyPart>() == bp)
+                    _hit.transform.gameObject.GetComponent<BodyPart>();
+                    int i = 0;
+                    foreach (BodyPart bp in bodyParts)
                     {
-                        MouseRHit = true;
-                        oldMousePosition = Input.mousePosition;
-                        oldPosition = transform.position;
+                        if (_hit.transform.gameObject.GetComponent<BodyPart>() == bp)
+                        {
+                            MouseRHit = true;
+                            oldMousePosition = Input.mousePosition;
+                            oldPosition = transform.position;
+                        }
+                        i++;
                     }
-                    i++;
                 }
             }
         }
@@ -101,7 +112,7 @@ public class BodyController : MonoBehaviour
 
     void handleDrag()
     {
-        if (MouseRHit)
+        if (MouseRHit && !disable)
         {
             Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
             Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -130,61 +141,64 @@ public class BodyController : MonoBehaviour
     void Update()
     {
         Hover();
-        Clicked();
-        handleDrag();
-        foreach (BodyPart bp in bodyParts)
-        {
-            bp.selected = false;
-            bp.hovered = false;
-        }
-        if (indexHovered != -1)
-        {
-            bodyParts[indexHovered].hovered = true;
-        }
-        if (indexClick != -1)
-        {
-            bodyParts[indexClick].selected = true;
-            currentBodyPart = bodyParts[indexClick];
-        }
-        else
-        {
-            currentBodyPart = null;
-        }
+        if(!disable) {
+            Clicked();
+            handleDrag();
+            foreach (BodyPart bp in bodyParts)
+            {
+                bp.selected = false;
+                bp.hovered = false;
+            }
+            if (indexHovered != -1)
+            {
+                bodyParts[indexHovered].hovered = true;
+            }
+            if (indexClick != -1)
+            {
+                bodyParts[indexClick].selected = true;
+                currentBodyPart = bodyParts[indexClick];
+            }
+            else
+            {
+                currentBodyPart = null;
+            }
 
-        Vector2 currentMousePosition = Input.mousePosition;
+            Vector2 currentMousePosition = Input.mousePosition;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            mouseLDown = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            indexClick = -1;
-            currentBodyPart = null;
-            mouseLDown = false;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseLDown = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                indexClick = -1;
+                currentBodyPart = null;
+                mouseLDown = false;
+            }
 
-        if (mouseLDown && currentBodyPart)
-        {
-            Vector3 target;
-            // mouse_pos.z = 5.23; //The distance between the camera and object
-            Vector3 bodyPart = Camera.main.WorldToScreenPoint(currentBodyPart.transform.position);
-            target.x = Input.mousePosition.x - bodyPart.x;
-            target.y = Input.mousePosition.y - bodyPart.y;
-            float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
-            // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
-            currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
+            if (mouseLDown && currentBodyPart)
+            {
+                Vector3 target;
+                // mouse_pos.z = 5.23; //The distance between the camera and object
+                Vector3 bodyPart = Camera.main.WorldToScreenPoint(currentBodyPart.transform.position);
+                target.x = Input.mousePosition.x - bodyPart.x;
+                target.y = Input.mousePosition.y - bodyPart.y;
+                float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+                // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
+                currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
 
-            // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
-            // direction = new Vector3(direction.x, direction.y, 0);
-            // var targetRotation = Quaternion.LookRotation(direction);
-            // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
-        }
+                // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
+                // direction = new Vector3(direction.x, direction.y, 0);
+                // var targetRotation = Quaternion.LookRotation(direction);
+                // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
+            }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            MouseRHit = false;
+            if (Input.GetMouseButtonUp(1))
+            {
+                MouseRHit = false;
+            }
         }
+        
 
     }
 }

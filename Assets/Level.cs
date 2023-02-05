@@ -27,13 +27,15 @@ public class Level : MonoBehaviour
     void Update()
     {
         if (active) {
+            letter.enabled = false;
             timePassed += Time.deltaTime;
             timerPie.fillAmount = timePassed / timerLength;
             if(timePassed > timerLength || Input.GetKeyDown("space")) {
+                body.disabled();
                 active = false;
                 finished = true;
                 transform.DOMove(new Vector3(-100,0,0), 1);
-                Invoke("setupEnd", 1);
+                Invoke("setupEnd", 1.05f);
                 // transform.position = new Vector3(-100,0,0);
             }
         }
