@@ -26,9 +26,10 @@ public class Level : MonoBehaviour
     {
         if (active) {
             timePassed += Time.deltaTime;
-            if(timePassed < timerLength || Input.GetKeyDown("space")) {
+            if(timePassed > timerLength || Input.GetKeyDown("space")) {
                 active = false;
                 finished = true;
+                transform.position = new Vector3(-100,0,0);
             }
         }
     }
@@ -42,6 +43,6 @@ public class Level : MonoBehaviour
 
     public void activate() {
         active = true;
-        
+        transform.position = new Vector3(0,0,0);
     }
 }

@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour
     {
         if (levels.Length <= levelIndex){
             //change scene
-        }
-
-        Level currentLevel = levels[levelIndex];
-        if(currentLevel.isNotInit()) {
-            currentLevel.activate();
-        } else if (currentLevel.isFinished()) {
-            levelIndex++;
-        }
+        } else {
+             Level currentLevel = levels[levelIndex];
+            if(currentLevel.isNotInit()) {
+                currentLevel.activate();
+            } else if (currentLevel.isFinished()) {
+                levelIndex++;
+            }
+        }       
     }
 }
