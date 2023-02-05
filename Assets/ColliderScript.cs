@@ -19,7 +19,9 @@ public class ColliderScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        HasHitBody = true;
+        if(!other.isTrigger) {
+            HasHitBody = true;
+        }        
     }
 
     private void OnTriggerExit(Collider other) {
@@ -28,10 +30,13 @@ public class ColliderScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        HasHitBody = true;
+        if(!other.isTrigger) {
+            HasHitBody = true;
+        }
     }
 
     public bool HasCollided() {
+
         return HasHitBody;
     }
 
