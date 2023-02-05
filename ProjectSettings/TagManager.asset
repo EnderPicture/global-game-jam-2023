@@ -8,6 +8,8 @@ TagManager:
   - collider
   - gigabad
   - bad
+  - clock
+  - shout
   layers:
   - Default
   - TransparentFX
@@ -42,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Backgroud
+    uniqueID: 3739204477
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -50,4 +55,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 208928659
+    locked: 0
+  - name: Shout
+    uniqueID: 3095416711
     locked: 0

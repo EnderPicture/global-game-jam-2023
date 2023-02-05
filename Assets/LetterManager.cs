@@ -17,6 +17,7 @@ public class LetterManager : MonoBehaviour
     private float NumberOfBadColliders = 0;
     private float NumberOfMinorColliders = 0;
     private float Score = 0;
+    private float old = 0;
     private bool IsLetterComplete = false;
     // Start is called before the first frame update
     void Start()
@@ -69,17 +70,14 @@ public class LetterManager : MonoBehaviour
         // minorNodes/total minor nodes * 30% +
         // Massive penalty (-25%) + 
         // minor penalty (-2%)
+        old = Score;
         Score = (NumberOfHitColliders/ColliderList.Count * 0.70f) 
                 + (NumberOfMinorColliders/MinorColliders.Count * 0.30f) 
                 - (NumberOfGigaBadColliders * 0.25f)
                 - (NumberOfBadColliders * 0.02f);
-
-        Debug.Log("Score: " + Score);
-        Debug.Log("NumberOfHitColliders: " + NumberOfHitColliders);
-        Debug.Log("ColliderList.Count : " + ColliderList.Count );
-        Debug.Log("NumberOfMinorColliders: " + NumberOfMinorColliders);
-        Debug.Log("Score: " + Score);
-        Debug.Log("Score: " + Score);
+        if (Score != old) {
+            Debug.Log("Score: " + Score);
+        }
     }
 
     
