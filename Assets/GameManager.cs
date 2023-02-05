@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour
     public Level[] levels;
     public Camera mainCamera;
     public Camera endCamera;
+    public TMPro.TextMeshPro percent_text;
+    public TMPro.TextMeshPro score_text;
     [HideInInspector]
 
     public bool end = false;
     private int levelIndex = 0;
     // Start is called before the first frame update
     private GenerateShout shoutManager;
+    private double sum = 0;
     void Start()
     {
         DOTween.Init();
@@ -28,7 +31,11 @@ public class GameManager : MonoBehaviour
             end = true;
             mainCamera.enabled = false;
             endCamera.enabled = true;
+            double finalScore = (sum/levels.Length);
+            int percent = (int)(finalScore*100);
+            percent_text.text = percent+"%";
 
+            score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
             // Sequence mySequence = DOTween.Sequence();
             // // mySequence.Append(endCamera.transform.DOMove(new Vector3(-72.8f, 10.2f, -10), 1))
             // // .Append(endCamera.transform.DOMove(new Vector3(-114.8f, 11.9f, -10), .4f))
@@ -50,6 +57,7 @@ public class GameManager : MonoBehaviour
             }
             else if (currentLevel.isFinished())
             {
+                sum += currentLevel.getScore();
                 levelIndex++;
             }
         }
