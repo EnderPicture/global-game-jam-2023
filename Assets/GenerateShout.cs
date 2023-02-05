@@ -21,13 +21,18 @@ public class GenerateShout : MonoBehaviour
         
     }
 
-    public void shout(int mode) {
-        ShoutOutList[0].enabled = true;
-        ShoutOutList[mode].enabled = true;
-        ShoutOutList[0].DOFade(1.0f, 2.0f);
-        ShoutOutList[mode].DOFade(.0f, 2.0f);
+    private void disable(int mode) {
         ShoutOutList[0].enabled = false;
         ShoutOutList[mode].enabled = false;
+    }
+
+    public void shout(int mode) {
+        ShoutOutList[0].gameObject.SetActive(true);
+        ShoutOutList[mode].gameObject.SetActive(true);
+        ShoutOutList[0].DOFade(0f, 1.0f).SetDelay(1);
+        ShoutOutList[0].gameObject.transform.DOShakePosition(1.0f);
+        ShoutOutList[mode].gameObject.transform.DOShakePosition(1.0f);
+        ShoutOutList[mode].DOFade(.0f, 1.0f).OnComplete(() => disable(mode)).SetDelay(1);
     }
 
 
@@ -37,7 +42,6 @@ public class GenerateShout : MonoBehaviour
                 shout(1);
                 break;
             case "G":
-                Debug.Log("G CALLED");
                 shout(2);
                 break;
             case "T":

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Level[] levels;
     private int levelIndex = 0;
     // Start is called before the first frame update
+    private GenerateShout shoutManager;
     void Start()
     {
         DOTween.Init();
@@ -26,6 +27,10 @@ public class GameManager : MonoBehaviour
             if (currentLevel.isNotInit())
             {
                 currentLevel.activate();
+                GameObject[] shoutObject = GameObject.FindGameObjectsWithTag("shout");
+                shoutManager = shoutObject[0].GetComponent<GenerateShout>();
+                string name = levels[levelIndex].gameObject.name;
+                shoutManager.setShoutOut("" + name[0]);
             }
             else if (currentLevel.isFinished())
             {
