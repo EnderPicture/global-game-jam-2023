@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Camera endCamera;
     public TMPro.TextMeshPro percent_text;
     public TMPro.TextMeshPro score_text;
+    public TMPro.TextMeshPro percent_text;
+    public TMPro.TextMeshPro score_text;
     [HideInInspector]
 
     public bool end = false;
@@ -25,6 +27,10 @@ public class GameManager : MonoBehaviour
         endCamera.enabled = false;
     }
 
+    public GameObject ParticleSystemLeft;
+    public GameObject ParticleSystemRight;
+
+    public AudioClip endingAudio;
     // Update is called once per frame
     void Update()
     {
@@ -36,7 +42,11 @@ public class GameManager : MonoBehaviour
             double finalScore = (sum/levels.Length);
             int percent = (int)(finalScore*100);
             percent_text.text = percent+"%";
+            double finalScore = (sum/levels.Length);
+            int percent = (int)(finalScore*100);
+            percent_text.text = percent+"%";
 
+            score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
             score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
             // Sequence mySequence = DOTween.Sequence();
             // // mySequence.Append(endCamera.transform.DOMove(new Vector3(-72.8f, 10.2f, -10), 1))
@@ -45,6 +55,9 @@ public class GameManager : MonoBehaviour
             // // .Append(endCamera.transform.DOMove(new Vector3(-100f, -.07f, -10), .3f))
             // // .Append(DOTween.To(()=> endCamera.orthographicSize, x=> endCamera.orthographicSize = x, 20, .8f));
             // mySequence.Play();
+            
+            //Play Audio
+            MusicManager.Instance.Play(endingAudio);
         }
         else
         {
@@ -54,16 +67,25 @@ public class GameManager : MonoBehaviour
                 progressBar.SetProgress(levelIndex);
 
                 
+                progressBar.SetProgress(levelIndex);
+
+                
                 currentLevel.activate();
                 GameObject[] shoutObject = GameObject.FindGameObjectsWithTag("shout");
                 shoutManager = shoutObject[0].GetComponent<GenerateShout>();
                 string name = levels[levelIndex].gameObject.name;
 
 
+
+
                 shoutManager.setShoutOut("" + name[0]);
             }
             else if (currentLevel.isFinished())
             {
+                ParticleSystemLeft.SetActive(false);
+                ParticleSystemRight.SetActive(false);
+                ParticleSystemLeft.SetActive(true);
+                ParticleSystemRight.SetActive(true);
                 sum += currentLevel.getScore();
                 levelIndex++;
             }
