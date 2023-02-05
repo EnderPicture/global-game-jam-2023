@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BodyController : MonoBehaviour
 {
+    [Range(0, 10)]
+    public int style;
+    public SpriteRenderer[] sprites;
+
     public BodyPart[] bodyParts;
 
     private int indexClick = -1;
@@ -31,6 +35,7 @@ public class BodyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetStyle();
     }
 
 
@@ -98,6 +103,21 @@ public class BodyController : MonoBehaviour
         }
     }
 
+    void SetStyle()
+    {
+        foreach (SpriteRenderer spriteRenderer in sprites)
+        {
+            string fileName = "character/" + spriteRenderer.sprite.name;
+            if (style != 10)
+            {
+                fileName += "_";
+                fileName += 36 * style;
+            }
+            Debug.Log(fileName);
+            spriteRenderer.sprite = Resources.Load(fileName, typeof(Sprite)) as Sprite;
+            Debug.Log(Resources.Load(fileName, typeof(Sprite)) as Sprite);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
