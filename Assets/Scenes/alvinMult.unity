@@ -1233,9 +1233,12 @@ MonoBehaviour:
   mainCamera: {fileID: 1872164913}
   endCamera: {fileID: 1362748870}
   percent_text: {fileID: 221042319}
-  score_text: {fileID: 865930879}
+  tut: {fileID: 0}
   end: 0
   progressBar: {fileID: 1655127948}
+  ParticleSystemLeft: {fileID: 0}
+  ParticleSystemRight: {fileID: 0}
+  endingAudio: {fileID: 0}
 --- !u!4 &681792246
 Transform:
   m_ObjectHideFlags: 0

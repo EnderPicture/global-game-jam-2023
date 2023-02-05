@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private double sum = 0;
 
     public ProgressBar progressBar;
+
+    private bool applaused = false;
     void Start()
     {
         DOTween.Init();
@@ -54,6 +56,11 @@ public class GameManager : MonoBehaviour
             // mySequence.Play();
 
             //Play Audio
+            if (!applaused)
+            {
+                MusicManager.Instance.Play(endingAudio);
+                applaused = true;
+            }
         }
         else
         {
