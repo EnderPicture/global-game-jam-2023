@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     public BodyController body;
     private LetterManager letter;
     public Image timerPie;
+    private GenerateShout shoutload;
     public float timerLength = 30;
     private float timePassed = 0;
     private bool finished = false;
@@ -17,10 +18,12 @@ public class Level : MonoBehaviour
     public float lastX = 500;
     public float lastY = 500;
     // Start is called before the first frame update
-    void Start()
-    {
-          body = GetComponentInChildren(typeof(BodyController)) as BodyController;
-          letter = GetComponentInChildren(typeof(LetterManager)) as LetterManager;
+    void Start() {
+        GameObject s = GameObject.FindGameObjectWithTag("shout");
+        shoutload = s.GetComponent<GenerateShout>();
+        shoutload.setShoutOut("G");
+        body = GetComponentInChildren(typeof(BodyController)) as BodyController;
+        letter = GetComponentInChildren(typeof(LetterManager)) as LetterManager;
     }
 
     // Update is called once per frame
