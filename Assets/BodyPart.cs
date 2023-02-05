@@ -23,19 +23,19 @@ public class BodyPart : MonoBehaviour
 
     void FixedUpdate()
     {
-        float rotateR = Input.GetAxis("HorizontalR");
-        float rotateL = Input.GetAxis("HorizontalL");
+        // float rotateR = Input.GetAxis("HorizontalR");
+        // float rotateL = Input.GetAxis("HorizontalL");
 
-        if (selected)
-        {
-            sprite.color = new Color(1, 0, 0, 1);
-            rotation += rotateL * speedMultiplier;
-        }
-        else
-        {
-            sprite.color = new Color(1, 1, 1, 1);
-        }
-        transform.localRotation = Quaternion.Euler(0, 0, rotation);
+        // if (selected)
+        // {
+        //     sprite.color = new Color(1, 0, 0, 1);
+        //     rotation += rotateL * speedMultiplier;
+        // }
+        // else
+        // {
+        //     sprite.color = new Color(1, 1, 1, 1);
+        // }
+        // transform.localRotation = Quaternion.Euler(0, 0, rotation);
 
     }
 }

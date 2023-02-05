@@ -6,7 +6,7 @@ public class BodyController : MonoBehaviour
 {
     public BodyPart[] bodyParts;
 
-    private int indexClick = 0;
+    private int indexClick = -1;
 
     private float lastAxisR;
     private float lastAxisL;
@@ -51,7 +51,7 @@ public class BodyController : MonoBehaviour
                     i++;
                 }
             }
-        }
+        } 
     }
 
     // Update is called once per frame
@@ -64,30 +64,42 @@ public class BodyController : MonoBehaviour
         {
             bp.selected = false;
         }
-        bodyParts[indexClick].selected = true;
-        currentBodyPart = bodyParts[indexClick];
-
-
-
+        if(indexClick != -1) {
+            bodyParts[indexClick].selected = true;
+            currentBodyPart = bodyParts[indexClick];
+        } else {
+            currentBodyPart = null;
+        }
+        
 
         Vector2 currentMousePosition = Input.mousePosition;
 
         if (Input.GetMouseButtonDown(0))
         {
             mouseDown = true;
-            mosueMoved = false;
-            startMousePosition = Input.mousePosition;
-            startRotation = currentBodyPart.rotation;
         }
         if (Input.GetMouseButtonUp(0))
         {
             mouseDown = false;
+            indexClick = -1;
+            currentBodyPart = null;
         }
 
-        if (mouseDown)
+        if (mouseDown && currentBodyPart)
         {
-            float delta = (startMousePosition - currentMousePosition).y;
-            currentBodyPart.rotation = startRotation + delta;
+            Vector3 target;
+            // mouse_pos.z = 5.23; //The distance between the camera and object
+            Vector3 bodyPart = Camera.main.WorldToScreenPoint(currentBodyPart.transform.position);
+            target.x = Input.mousePosition.x - bodyPart.x;
+            target.y = Input.mousePosition.y - bodyPart.y;
+            float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+            // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
+            currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle+90)), 500* Time.deltaTime);
+
+            // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
+            // direction = new Vector3(direction.x, direction.y, 0);
+            // var targetRotation = Quaternion.LookRotation(direction);
+            // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
         }
     }
 }
