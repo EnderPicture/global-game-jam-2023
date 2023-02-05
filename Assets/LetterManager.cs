@@ -75,6 +75,11 @@ public class LetterManager : MonoBehaviour
                 - (NumberOfBadColliders * 0.02f);
 
         Debug.Log("Score: " + Score);
+        Debug.Log("NumberOfHitColliders: " + NumberOfHitColliders);
+        Debug.Log("ColliderList.Count : " + ColliderList.Count );
+        Debug.Log("NumberOfMinorColliders: " + NumberOfMinorColliders);
+        Debug.Log("Score: " + Score);
+        Debug.Log("Score: " + Score);
     }
 
     
