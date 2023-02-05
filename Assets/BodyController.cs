@@ -176,24 +176,6 @@ public class BodyController : MonoBehaviour
                 mouseLDown = false;
             }
 
-<<<<<<< HEAD
-        if (mouseLDown && currentBodyPart)
-        {
-            Vector3 target;
-            // mouse_pos.z = 5.23; //The distance between the camera and object
-            Vector3 bodyPart = Camera.main.WorldToScreenPoint(currentBodyPart.transform.position);
-            target.x = Input.mousePosition.x - bodyPart.x;
-            target.y = Input.mousePosition.y - bodyPart.y;
-            float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
-            // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
-            currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
-            MusicManager.Instance.Play(click);
-            // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
-            // direction = new Vector3(direction.x, direction.y, 0);
-            // var targetRotation = Quaternion.LookRotation(direction);
-            // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
-        }
-=======
             if (mouseLDown && currentBodyPart)
             {
                 Vector3 target;
@@ -204,13 +186,12 @@ public class BodyController : MonoBehaviour
                 float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
                 // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
                 currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
-
+                MusicManager.Instance.Play(click);
                 // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
                 // direction = new Vector3(direction.x, direction.y, 0);
                 // var targetRotation = Quaternion.LookRotation(direction);
                 // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
             }
->>>>>>> dcc9ef1b9f2283bae690c598865d2f8851ff6a55
 
             if (Input.GetMouseButtonUp(1))
             {
