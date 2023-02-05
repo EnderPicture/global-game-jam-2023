@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
     public Camera endCamera;
     public TMPro.TextMeshPro percent_text;
     public TMPro.TextMeshPro score_text;
-    public TMPro.TextMeshPro percent_text;
-    public TMPro.TextMeshPro score_text;
     [HideInInspector]
 
     public bool end = false;
