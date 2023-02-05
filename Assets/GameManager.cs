@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
         endCamera.enabled = false;
     }
 
+    public GameObject ParticleSystemLeft;
+    public GameObject ParticleSystemRight;
+
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +53,10 @@ public class GameManager : MonoBehaviour
             }
             else if (currentLevel.isFinished())
             {
+                ParticleSystemLeft.SetActive(false);
+                ParticleSystemRight.SetActive(false);
+                ParticleSystemLeft.SetActive(true);
+                ParticleSystemRight.SetActive(true);
                 levelIndex++;
             }
         }

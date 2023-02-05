@@ -10,6 +10,7 @@ TagManager:
   - bad
   - clock
   - shout
+  - particle
   layers:
   - Default
   - TransparentFX
