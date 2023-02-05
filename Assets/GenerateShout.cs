@@ -37,12 +37,12 @@ public class GenerateShout : MonoBehaviour
         ShoutOutList[0].DOFade(0f, 1.0f).SetDelay(1);
         ShoutOutList[0].gameObject.transform.DOShakePosition(1.0f);
         ShoutOutList[mode].gameObject.transform.DOShakePosition(1.0f);
-        ShoutOutList[mode].DOFade(.0f, 1.0f).OnComplete(() => disable(mode)).SetDelay(1);
+        ShoutOutList[mode].DOFade(0f, 1.0f).OnComplete(() => disable(mode)).SetDelay(1);
     }
 
 
     public void setShoutOut(string shoutOut) {
-        
+        MusicManager.Instance.EffectsSource.time = 0.7f;
         switch (shoutOut) {
             case ",":
                 MusicManager.Instance.Play(ReinaNoise[2]);
