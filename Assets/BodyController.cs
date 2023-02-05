@@ -14,12 +14,15 @@ public class BodyController : MonoBehaviour
     private RaycastHit _hit;
     private Ray _ray;
 
-    private bool mouseDown = false;
-    private bool mosueMoved = false;
+    private bool mouseLDown = false;
+    private bool mouseMoved = false;
+    private bool MouseRHit = false;
 
     private BodyPart currentBodyPart;
 
     private Vector2 startMousePosition = new Vector2();
+    private Vector2 realMouse = new Vector3();
+
 
     private float rotation = 0;
     private float startRotation = 0;
@@ -32,6 +35,8 @@ public class BodyController : MonoBehaviour
 
     void Clicked()
     {
+        Vector2 realMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
         if (Input.GetMouseButtonDown(0))
         {
             _ray = new Ray(
@@ -52,14 +57,41 @@ public class BodyController : MonoBehaviour
                 }
             }
         } 
+
+        else if (Input.GetMouseButtonDown(1)) {
+            _ray = new Ray(
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                Camera.main.transform.forward);
+
+            if (Physics.Raycast(_ray, out _hit, 1000f))
+            {
+                _hit.transform.gameObject.GetComponent<BodyPart>();
+                int i = 0;
+                foreach (BodyPart bp in bodyParts)
+                {
+                    if (_hit.transform.gameObject.GetComponent<BodyPart>() == bp)
+                    {
+                        MouseRHit = true;
+                    }
+                    i++;
+                }
+            }
+        }
+    }
+
+    void handleDrag() {
+        if(MouseRHit) {
+            Vector3 NewPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 FinalPosition = new Vector3(NewPosition.x, NewPosition.y, this.transform.position.z);
+            this.transform.position = FinalPosition;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         Clicked();
-
-
+        handleDrag();
         foreach (BodyPart bp in bodyParts)
         {
             bp.selected = false;
@@ -71,21 +103,20 @@ public class BodyController : MonoBehaviour
             currentBodyPart = null;
         }
         
-
         Vector2 currentMousePosition = Input.mousePosition;
 
         if (Input.GetMouseButtonDown(0))
         {
-            mouseDown = true;
+            mouseLDown = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
-            mouseDown = false;
             indexClick = -1;
             currentBodyPart = null;
+            mouseLDown = false;
         }
 
-        if (mouseDown && currentBodyPart)
+        if (mouseLDown && currentBodyPart)
         {
             Vector3 target;
             // mouse_pos.z = 5.23; //The distance between the camera and object
@@ -101,5 +132,10 @@ public class BodyController : MonoBehaviour
             // var targetRotation = Quaternion.LookRotation(direction);
             // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
         }
+
+        if (Input.GetMouseButtonUp(1)) {
+            MouseRHit = false;
+        }
+
     }
 }

@@ -17,7 +17,6 @@ public class LetterManager : MonoBehaviour
         ColliderList = new ColliderScript[transform.childCount];
         foreach (Transform collider in transform) {
             ColliderList[index] = (collider.GetComponent<ColliderScript>());
-            Debug.Log(ColliderList[index]);
             index = index + 1;
         }
     }
@@ -27,12 +26,8 @@ public class LetterManager : MonoBehaviour
     {
         Score = NumberOfHitColliders / ColliderList.Length;
         NumberOfHitColliders = 0;   
-        Debug.Log(ColliderList.Length);
-        
-
         foreach (ColliderScript Collider in ColliderList) {
             if(Collider.HasCollided()) {
-                Debug.Log("HIT!!!!");
                 NumberOfHitColliders = NumberOfHitColliders + 1;
             }
         }
