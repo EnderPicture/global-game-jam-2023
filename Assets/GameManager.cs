@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Camera endCamera;
     public TMPro.TextMeshPro percent_text;
     public TMPro.TextMeshPro score_text;
+    public GameObject tut;
     [HideInInspector]
 
     public bool end = false;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
             }
             else if (currentLevel.isFinished())
             {
+                tut.SetActive(false);
                 ParticleSystemLeft.SetActive(false);
                 ParticleSystemRight.SetActive(false);
                 ParticleSystemLeft.SetActive(true);
