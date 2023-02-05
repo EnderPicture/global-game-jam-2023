@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject ParticleSystemLeft;
     public GameObject ParticleSystemRight;
 
+    public AudioClip endingAudio;
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +40,9 @@ public class GameManager : MonoBehaviour
             // // .Append(endCamera.transform.DOMove(new Vector3(-100f, -.07f, -10), .3f))
             // // .Append(DOTween.To(()=> endCamera.orthographicSize, x=> endCamera.orthographicSize = x, 20, .8f));
             // mySequence.Play();
+            
+            //Play Audio
+            MusicManager.Instance.Play(endingAudio);
         }
         else
         {
