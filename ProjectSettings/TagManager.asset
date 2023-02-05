@@ -59,3 +59,9 @@ TagManager:
   - name: Shout
     uniqueID: 3095416711
     locked: 0
+  - name: IMPORTANT!
+    uniqueID: 737023187
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 1140068751
+    locked: 0
