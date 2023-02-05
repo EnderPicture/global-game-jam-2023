@@ -29,7 +29,7 @@ public class BodyPart : MonoBehaviour
 
         if (hovered)
         {
-            sprite.material.SetFloat("_Size", .1f);
+            sprite.material.SetFloat("_Size", .05f);
         }
         else
         {
