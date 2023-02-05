@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
 
     public float lastX = 500;
     public float lastY = 500;
+    private float score = 0;
     // Start is called before the first frame update
     void Start() {
         body = GetComponentInChildren(typeof(BodyController)) as BodyController;
@@ -27,11 +28,12 @@ public class Level : MonoBehaviour
     void Update()
     {
         if (active) {
-            letter.enabled = false;
             timePassed += Time.deltaTime;
             timerPie.fillAmount = timePassed / timerLength;
+            score = letter.getScore();
             if(timePassed > timerLength || Input.GetKeyDown("space")) {
                 body.disabled();
+                letter.enabled = false;
                 active = false;
                 finished = true;
                 transform.DOMove(new Vector3(-100,0,0), 1);
@@ -39,6 +41,10 @@ public class Level : MonoBehaviour
                 // transform.position = new Vector3(-100,0,0);
             }
         }
+    }
+
+    public float getScore() {
+        return score;
     }
 
     public bool isNotInit() {

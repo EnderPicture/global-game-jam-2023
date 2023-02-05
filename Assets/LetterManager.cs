@@ -75,10 +75,10 @@ public class LetterManager : MonoBehaviour
                 + (NumberOfMinorColliders/MinorColliders.Count * 0.30f) 
                 - (NumberOfGigaBadColliders * 0.25f)
                 - (NumberOfBadColliders * 0.02f);
-        if (Score != old) {
-            Debug.Log("Score: " + Score);
-        }
+        Score = Mathf.Min(Score,0);
     }
 
-    
+    public float getScore() {
+        return Score;
+    }
 }
