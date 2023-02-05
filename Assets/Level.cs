@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
     [HideInInspector]
     public BodyController body;
     private LetterManager letter;
+    public Image timerPie;
     public float timerLength = 30;
     private float timePassed = 0;
     private bool finished = false;
@@ -26,6 +28,7 @@ public class Level : MonoBehaviour
     {
         if (active) {
             timePassed += Time.deltaTime;
+            timerPie.fillAmount = timePassed / timerLength;
             if(timePassed > timerLength || Input.GetKeyDown("space")) {
                 active = false;
                 finished = true;
