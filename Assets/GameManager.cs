@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
     public Camera endCamera;
     public TMPro.TextMeshPro percent_text;
-    public TMPro.TextMeshPro score_text;
+
     public GameObject tut;
     [HideInInspector]
 
@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
             int percent = (int)(finalScore * 100);
             percent_text.text = percent + "%";
 
-            score_text.text = (int)(sum * 1000) + "/" + levels.Length * 1000;
             // Sequence mySequence = DOTween.Sequence();
             // // mySequence.Append(endCamera.transform.DOMove(new Vector3(-72.8f, 10.2f, -10), 1))
             // // .Append(endCamera.transform.DOMove(new Vector3(-114.8f, 11.9f, -10), .4f))
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
             // mySequence.Play();
 
             //Play Audio
-            MusicManager.Instance.Play(endingAudio);
         }
         else
         {

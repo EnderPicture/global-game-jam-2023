@@ -23,6 +23,6 @@ public class start : MonoBehaviour
     }
 
     void loadScene() {
-        SceneManager.LoadScene("alvinMult", LoadSceneMode.Single);
+        SceneManager.LoadScene("MAIN", LoadSceneMode.Single);
     }
 }
