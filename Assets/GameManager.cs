@@ -37,12 +37,14 @@ public class GameManager : MonoBehaviour
             end = true;
             mainCamera.enabled = false;
             endCamera.enabled = true;
-            double finalScore = (sum/levels.Length);
-            int percent = (int)(finalScore*100);
-            percent_text.text = percent+"%";
+            progressBar.gameObject.SetActive(false);
+            endCamera.GetComponent<Animator>().SetBool("Run", true);
 
-            score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
-            score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
+            double finalScore = (sum / levels.Length);
+            int percent = (int)(finalScore * 100);
+            percent_text.text = percent + "%";
+
+            score_text.text = (int)(sum * 1000) + "/" + levels.Length * 1000;
             // Sequence mySequence = DOTween.Sequence();
             // // mySequence.Append(endCamera.transform.DOMove(new Vector3(-72.8f, 10.2f, -10), 1))
             // // .Append(endCamera.transform.DOMove(new Vector3(-114.8f, 11.9f, -10), .4f))
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
             // // .Append(endCamera.transform.DOMove(new Vector3(-100f, -.07f, -10), .3f))
             // // .Append(DOTween.To(()=> endCamera.orthographicSize, x=> endCamera.orthographicSize = x, 20, .8f));
             // mySequence.Play();
-            
+
             //Play Audio
             MusicManager.Instance.Play(endingAudio);
         }
@@ -61,10 +63,9 @@ public class GameManager : MonoBehaviour
             {
                 progressBar.SetProgress(levelIndex);
 
-                
-                progressBar.SetProgress(levelIndex);
 
-                
+
+
                 currentLevel.activate();
                 GameObject[] shoutObject = GameObject.FindGameObjectsWithTag("shout");
                 shoutManager = shoutObject[0].GetComponent<GenerateShout>();
