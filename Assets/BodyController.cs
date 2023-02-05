@@ -78,7 +78,8 @@ public class BodyController : MonoBehaviour
         _ray = new Ray(
             Camera.main.ScreenToWorldPoint(Input.mousePosition),
             Camera.main.transform.forward);
-        if (Physics.Raycast(_ray, out _hit, 1000f))
+        int layerMask = 1 << 7;
+        if (Physics.Raycast(_ray, out _hit, 1000f, layerMask))
         {
             _hit.transform.gameObject.GetComponent<BodyPart>();
             int i = 0;

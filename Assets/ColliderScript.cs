@@ -8,13 +8,13 @@ public class ColliderScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +22,8 @@ public class ColliderScript : MonoBehaviour
         HasHitBody = true;
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other)
+    {
         HasHitBody = false;
     }
 
@@ -31,7 +32,8 @@ public class ColliderScript : MonoBehaviour
         HasHitBody = true;
     }
 
-    public bool HasCollided() {
+    public bool HasCollided()
+    {
         return HasHitBody;
     }
 

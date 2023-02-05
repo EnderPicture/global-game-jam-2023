@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292851276506242159}
   - component: {fileID: 292851276506242158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 292851277156099337}
   - component: {fileID: 292851277156099338}
   - component: {fileID: 2357935651727803180}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,6 +133,7 @@ MonoBehaviour:
   rotation: 0
   speedMultiplier: 5
   selected: 0
+  hovered: 0
   sprite: {fileID: 292851276506242158}
   index: 0
 --- !u!136 &2357935651727803180
