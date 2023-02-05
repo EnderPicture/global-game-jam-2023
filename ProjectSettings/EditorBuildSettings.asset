@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/StartScene.unity
+    guid: 9b4fff647da87e641acddec9be79ad45
+  - enabled: 1
+    path: Assets/Scenes/alvinMult.unity
+    guid: 96b4487335f0069408eba4f735187870
   m_configObjects: {}
