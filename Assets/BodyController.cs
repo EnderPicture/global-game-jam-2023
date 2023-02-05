@@ -32,6 +32,9 @@ public class BodyController : MonoBehaviour
     private float rotation = 0;
     private float startRotation = 0;
 
+    private Vector3 oldMousePosition;
+    private Vector3 oldPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +68,8 @@ public class BodyController : MonoBehaviour
                     if (_hit.transform.gameObject.GetComponent<BodyPart>() == bp)
                     {
                         MouseRHit = true;
+                        oldMousePosition = Input.mousePosition;
+                        oldPosition = transform.position;
                     }
                     i++;
                 }
@@ -98,9 +103,11 @@ public class BodyController : MonoBehaviour
     {
         if (MouseRHit)
         {
-            Vector3 NewPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 FinalPosition = new Vector3(NewPosition.x, NewPosition.y, this.transform.position.z);
-            this.transform.position = FinalPosition;
+            Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
+            Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 delta = newMouse - oldMouse;
+
+            this.transform.position = oldPosition + delta;
         }
     }
 
