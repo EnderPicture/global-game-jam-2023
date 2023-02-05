@@ -6,10 +6,11 @@ public class BodyPart : MonoBehaviour
 {
     // Start is called before the first frame update
     public float rotation = 0;
-    
+
     public float speedMultiplier;
 
     public bool selected;
+    public bool hovered;
 
     public SpriteRenderer sprite;
 
@@ -26,11 +27,14 @@ public class BodyPart : MonoBehaviour
         // float rotateR = Input.GetAxis("HorizontalR");
         // float rotateL = Input.GetAxis("HorizontalL");
 
-        // if (selected)
-        // {
-        //     sprite.color = new Color(1, 0, 0, 1);
-        //     rotation += rotateL * speedMultiplier;
-        // }
+        if (hovered)
+        {
+            sprite.material.SetFloat("_Size", .05f);
+        }
+        else
+        {
+            sprite.material.SetFloat("_Size", 0f);
+        }
         // else
         // {
         //     sprite.color = new Color(1, 1, 1, 1);
