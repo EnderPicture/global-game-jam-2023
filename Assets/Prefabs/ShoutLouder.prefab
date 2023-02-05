@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 2319781849203436405}
   m_Layer: 0
   m_Name: ShoutLouder
-  m_TagString: Untagged
+  m_TagString: shout
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,6 +656,19 @@ MonoBehaviour:
   - {fileID: 7040678542129494944}
   - {fileID: 7040678542129494944}
   - {fileID: 7040678542129494944}
+  ReinaNoise:
+  - {fileID: 8300000, guid: 8b87411f451513b458c0a8c8a7554577, type: 3}
+  - {fileID: 8300000, guid: 36c0e3e5dfe928542bbd9480a06706b7, type: 3}
+  - {fileID: 8300000, guid: 5b909bfe90fd0c442b5a85cbef6f47e2, type: 3}
+  - {fileID: 8300000, guid: 815df3ce3e6eb004690d0dc73fa05050, type: 3}
+  - {fileID: 8300000, guid: 237ebdcf2a271234dbb3d1c85dafcae1, type: 3}
+  - {fileID: 8300000, guid: 8b87411f451513b458c0a8c8a7554577, type: 3}
+  - {fileID: 8300000, guid: 9a2cfa43ceae3d64597a5965cdbe5498, type: 3}
+  - {fileID: 8300000, guid: 936254bd8d8c80d429f6f476d5920692, type: 3}
+  - {fileID: 8300000, guid: afbace43e84cdc84fa01e5a2a3bb219a, type: 3}
+  - {fileID: 8300000, guid: 1c207ff87cd0bf5418c9125c006e24d2, type: 3}
+  - {fileID: 8300000, guid: ec30da5f57cadba4ab4fc7d58b778cc3, type: 3}
+  - {fileID: 8300000, guid: bd6f07c08e8e814448738a601491a3c4, type: 3}
 --- !u!1 &6217764010000526860
 GameObject:
   m_ObjectHideFlags: 0

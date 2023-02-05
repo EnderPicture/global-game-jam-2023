@@ -48,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectsSource: {fileID: 6006143340294883513}
   MusicSource: {fileID: 6639701355265494675}
-  CheerMusic: {fileID: 8300000, guid: ccf68a08e7feb6443b43792e532edc04, type: 3}
+  CheerMusic: {fileID: 8300000, guid: 60a9af5f25000a14a93b0748100f08c0, type: 3}
+  otherEffects:
+  - {fileID: 8300000, guid: 24127ca2d40d0c6449779de32d82ac73, type: 3}
 --- !u!1 &2819248020540530779
 GameObject:
   m_ObjectHideFlags: 0

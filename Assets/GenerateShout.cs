@@ -7,6 +7,7 @@ using DG.Tweening;
 public class GenerateShout : MonoBehaviour
 {   
     public List<SpriteRenderer> ShoutOutList;
+    public List<AudioClip> ReinaNoise;
 
     //Index 0 is the big speech bubble
     // Start is called before the first frame update
@@ -37,32 +38,42 @@ public class GenerateShout : MonoBehaviour
 
 
     public void setShoutOut(string shoutOut) {
+        
         switch (shoutOut) {
             case ",":
+                MusicManager.Instance.Play(ReinaNoise[2]);
                 shout(1);
                 break;
             case "G":
+                MusicManager.Instance.Play(ReinaNoise[0]);
                 shout(2);
                 break;
             case "T":
+                MusicManager.Instance.Play(ReinaNoise[10]);
                 shout(3);
                 break;
             case "W":
+                MusicManager.Instance.Play(ReinaNoise[11]);
                 shout(4);
                 break;
             case "!":
+                MusicManager.Instance.Play(ReinaNoise[1]);
                 shout(5);
                 break;
             case "F":
+                MusicManager.Instance.Play(ReinaNoise[4]);
                 shout(6);
                 break;
             case "H":
+                MusicManager.Instance.Play(ReinaNoise[6]);
                 shout(7);
                 break;
             case "N":
+                MusicManager.Instance.Play(ReinaNoise[8]);
                 shout(8);
                 break;
             case "O":
+                MusicManager.Instance.Play(ReinaNoise[9]);
                 shout(9);
                 break;
             default:
