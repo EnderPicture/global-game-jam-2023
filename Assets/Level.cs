@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Level : MonoBehaviour
 {
@@ -31,7 +32,9 @@ public class Level : MonoBehaviour
             if(timePassed > timerLength || Input.GetKeyDown("space")) {
                 active = false;
                 finished = true;
-                transform.position = new Vector3(-100,0,0);
+                transform.DOMove(new Vector3(-100,0,0), 1);
+                Invoke("setupEnd", 1);
+                // transform.position = new Vector3(-100,0,0);
             }
         }
     }
@@ -42,9 +45,14 @@ public class Level : MonoBehaviour
     public bool isFinished() {
         return finished;
     }
+    
+    public void setupEnd() {
+        transform.position = new Vector3(lastX, lastY, 0);
+    }
 
     public void activate() {
         active = true;
-        transform.position = new Vector3(0,0,0);
+        transform.DOMove(new Vector3(0,0,0), 1);
+        // transform.position = new Vector3(0,0,0);
     }
 }
