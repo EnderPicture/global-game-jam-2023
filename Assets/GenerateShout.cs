@@ -23,13 +23,17 @@ public class GenerateShout : MonoBehaviour
     }
 
     private void disable(int mode) {
-        ShoutOutList[0].enabled = false;
-        ShoutOutList[mode].enabled = false;
+        ShoutOutList[0].gameObject.SetActive(false);
+        ShoutOutList[mode].gameObject.SetActive(false);
     }
 
     public void shout(int mode) {
+
+
         ShoutOutList[0].gameObject.SetActive(true);
         ShoutOutList[mode].gameObject.SetActive(true);
+        ShoutOutList[0].DOFade(1.0f, 0.1f);
+        ShoutOutList[mode].DOFade(1.0f, 0.1f);
         ShoutOutList[0].DOFade(0f, 1.0f).SetDelay(1);
         ShoutOutList[0].gameObject.transform.DOShakePosition(1.0f);
         ShoutOutList[mode].gameObject.transform.DOShakePosition(1.0f);
@@ -75,6 +79,10 @@ public class GenerateShout : MonoBehaviour
             case "O":
                 MusicManager.Instance.Play(ReinaNoise[9]);
                 shout(9);
+                break;
+            case "I":
+                MusicManager.Instance.Play(ReinaNoise[7]);
+                shout(10);
                 break;
             default:
                 break;
