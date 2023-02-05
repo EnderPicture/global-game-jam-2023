@@ -40,9 +40,6 @@ public class GameManager : MonoBehaviour
             double finalScore = (sum/levels.Length);
             int percent = (int)(finalScore*100);
             percent_text.text = percent+"%";
-            double finalScore = (sum/levels.Length);
-            int percent = (int)(finalScore*100);
-            percent_text.text = percent+"%";
 
             score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
             score_text.text = (int)(sum*1000)+"/"+levels.Length*1000;
