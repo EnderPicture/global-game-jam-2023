@@ -36,6 +36,7 @@ public class BodyController : MonoBehaviour
     private Vector3 oldPosition;
     private bool disable = false;
 
+    public AudioClip click;
     // Start is called before the first frame update
     void Start()
     {
@@ -117,7 +118,6 @@ public class BodyController : MonoBehaviour
             Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
             Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 delta = newMouse - oldMouse;
-
             this.transform.position = oldPosition + delta;
         }
     }
@@ -186,7 +186,7 @@ public class BodyController : MonoBehaviour
                 float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
                 // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
                 currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
-
+                MusicManager.Instance.Play(click);
                 // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
                 // direction = new Vector3(direction.x, direction.y, 0);
                 // var targetRotation = Quaternion.LookRotation(direction);

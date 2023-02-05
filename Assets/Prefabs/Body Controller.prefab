@@ -63,23 +63,6 @@ MonoBehaviour:
   - {fileID: 8260598628479392222}
   - {fileID: 2546559709982245026}
   - {fileID: 4158774212771732764}
-  prefixies:
-  - Torso_w_Belly
-  - Belly
-  - Upper_Leg
-  - Lower_Leg
-  - L_Shoe
-  - Upper_Leg
-  - Lower_Leg
-  - L_Shoe
-  - Upper_Arm
-  - Lower_Arm
-  - L_Hand
-  - Neck
-  - Head
-  - Upper_Arm
-  - Lower_Arm
-  - L_Hand
   bodyParts:
   - {fileID: 4031324595837101736}
   - {fileID: 3738637448314159480}
@@ -97,6 +80,7 @@ MonoBehaviour:
   - {fileID: 3738637447320166326}
   - {fileID: 3738637448083746585}
   - {fileID: 3738637446534887094}
+  click: {fileID: 8300000, guid: 0fae9a2f5b2f3ce4793292a9e964d94a, type: 3}
 --- !u!1001 &2830327919857687756
 PrefabInstance:
   m_ObjectHideFlags: 0

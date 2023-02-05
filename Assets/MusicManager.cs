@@ -8,6 +8,7 @@ public class MusicManager : MonoBehaviour
 	public AudioSource MusicSource;
     public static MusicManager Instance = null;
     public AudioClip CheerMusic;
+    public List<AudioClip> otherEffects;
     private void Awake() {
         if (Instance == null)
 		{
@@ -36,6 +37,7 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
        PlayMusic(CheerMusic);
+       StartCoroutine(WaitForAudio());
     }
 
     // Update is called once per frame
@@ -44,6 +46,11 @@ public class MusicManager : MonoBehaviour
         
     }
 
+    private IEnumerator WaitForAudio()
+    {
+        yield return new WaitUntil(() => !EffectsSource.isPlaying);
+        // Perform actions here after the audio has finished playing
+    }
     	// Play a single clip through the sound effects source.
 
 }
