@@ -45,43 +45,43 @@ public class GenerateShout : MonoBehaviour
         MusicManager.Instance.ShoutSource.time = 0.7f;
         switch (shoutOut) {
             case ",":
-                MusicManager.Instance.Play(ReinaNoise[2]);
+                MusicManager.Instance.Shout(ReinaNoise[2]);
                 shout(1);
                 break;
             case "G":
-                MusicManager.Instance.Play(ReinaNoise[0]);
+                MusicManager.Instance.Shout(ReinaNoise[0]);
                 shout(2);
                 break;
             case "T":
-                MusicManager.Instance.Play(ReinaNoise[10]);
+                MusicManager.Instance.Shout(ReinaNoise[10]);
                 shout(3);
                 break;
             case "W":
-                MusicManager.Instance.Play(ReinaNoise[11]);
+                MusicManager.Instance.Shout(ReinaNoise[11]);
                 shout(4);
                 break;
             case "!":
-                MusicManager.Instance.Play(ReinaNoise[1]);
+                MusicManager.Instance.Shout(ReinaNoise[1]);
                 shout(5);
                 break;
             case "F":
-                MusicManager.Instance.Play(ReinaNoise[4]);
+                MusicManager.Instance.Shout(ReinaNoise[4]);
                 shout(6);
                 break;
             case "H":
-                MusicManager.Instance.Play(ReinaNoise[6]);
+                MusicManager.Instance.Shout(ReinaNoise[6]);
                 shout(7);
                 break;
             case "N":
-                MusicManager.Instance.Play(ReinaNoise[8]);
+                MusicManager.Instance.Shout(ReinaNoise[8]);
                 shout(8);
                 break;
             case "O":
-                MusicManager.Instance.Play(ReinaNoise[9]);
+                MusicManager.Instance.Shout(ReinaNoise[9]);
                 shout(9);
                 break;
             case "I":
-                MusicManager.Instance.Play(ReinaNoise[7]);
+                MusicManager.Instance.Shout(ReinaNoise[7]);
                 shout(10);
                 break;
             default:

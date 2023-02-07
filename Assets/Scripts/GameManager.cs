@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TextMeshPro percent_text;
 
     public GameObject tut;
+    public Grade grade;
     [HideInInspector]
 
     public bool end = false;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
             double finalScore = (sum / levels.Length);
             int percent = (int)(finalScore * 100);
             percent_text.text = percent + "%";
+            grade.setGrade(finalScore*100);
 
             // Sequence mySequence = DOTween.Sequence();
             // // mySequence.Append(endCamera.transform.DOMove(new Vector3(-72.8f, 10.2f, -10), 1))
