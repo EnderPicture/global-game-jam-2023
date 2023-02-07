@@ -30,7 +30,7 @@ public class Level : MonoBehaviour
             timerPie.fillAmount = timePassed / timerLength;
             score = letter.getScore();
             Debug.Log(score);
-            if(timePassed > timerLength || Input.GetKeyDown("space")) {
+            if(timePassed > timerLength || (Input.GetKeyDown("space") && timePassed > .5f)) {
                 BodyController[] body = GetComponentsInChildren<BodyController>();
                 foreach (BodyController b in body)
                 {
