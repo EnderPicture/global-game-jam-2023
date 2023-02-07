@@ -28,6 +28,7 @@ public class BodyController : MonoBehaviour
     private bool disable = false;
 
     public AudioClip click;
+    public AudioClip click2;
     // Start is called before the first frame update
     void Start()
     {
@@ -162,6 +163,10 @@ public class BodyController : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(0))
             {
+                if(currentBodyPart != null) {
+                    MusicManager.Instance.Play(click);
+                }
+                
                 indexClick = -1;
                 currentBodyPart = null;
                 mouseLDown = false;
@@ -177,7 +182,7 @@ public class BodyController : MonoBehaviour
                 float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
                 // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
                 currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
-                MusicManager.Instance.Play(click);
+                
                 // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
                 // direction = new Vector3(direction.x, direction.y, 0);
                 // var targetRotation = Quaternion.LookRotation(direction);

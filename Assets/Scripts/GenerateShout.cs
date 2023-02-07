@@ -42,7 +42,7 @@ public class GenerateShout : MonoBehaviour
 
 
     public void setShoutOut(string shoutOut) {
-        MusicManager.Instance.EffectsSource.time = 0.7f;
+        MusicManager.Instance.ShoutSource.time = 0.7f;
         switch (shoutOut) {
             case ",":
                 MusicManager.Instance.Play(ReinaNoise[2]);

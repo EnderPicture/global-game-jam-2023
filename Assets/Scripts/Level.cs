@@ -6,8 +6,6 @@ using DG.Tweening;
 
 public class Level : MonoBehaviour
 {
-    [HideInInspector]
-    public BodyController body;
     private LetterManager letter;
     public Image timerPie;
     public float timerLength = 30;
@@ -20,7 +18,6 @@ public class Level : MonoBehaviour
     private float score = 0;
     // Start is called before the first frame update
     void Start() {
-        body = GetComponentInChildren(typeof(BodyController)) as BodyController;
         letter = GetComponentInChildren(typeof(LetterManager)) as LetterManager;
     }
 
@@ -28,12 +25,17 @@ public class Level : MonoBehaviour
     void Update()
     {
         if (active) {
+            
             timePassed += Time.deltaTime;
             timerPie.fillAmount = timePassed / timerLength;
             score = letter.getScore();
             Debug.Log(score);
             if(timePassed > timerLength || Input.GetKeyDown("space")) {
-                body.disabled();
+                BodyController[] body = GetComponentsInChildren<BodyController>();
+                foreach (BodyController b in body)
+                {
+                    b.disabled();
+                }
                 letter.enabled = false;
                 active = false;
                 finished = true;

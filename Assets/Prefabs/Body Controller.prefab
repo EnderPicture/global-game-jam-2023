@@ -81,6 +81,7 @@ MonoBehaviour:
   - {fileID: 3738637448083746585}
   - {fileID: 3738637446534887094}
   click: {fileID: 8300000, guid: 0fae9a2f5b2f3ce4793292a9e964d94a, type: 3}
+  click2: {fileID: 8300000, guid: 24127ca2d40d0c6449779de32d82ac73, type: 3}
 --- !u!1001 &2830327919857687756
 PrefabInstance:
   m_ObjectHideFlags: 0

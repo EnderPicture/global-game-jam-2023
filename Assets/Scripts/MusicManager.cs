@@ -5,6 +5,7 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     public AudioSource EffectsSource;
+    public AudioSource ShoutSource;
 	public AudioSource MusicSource;
     public static MusicManager Instance = null;
     public AudioClip CheerMusic;
@@ -21,6 +22,10 @@ public class MusicManager : MonoBehaviour
 		}
 		//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
 		DontDestroyOnLoad (gameObject);
+    }
+    public void Shout(AudioClip clip){
+        ShoutSource.clip = clip;
+		ShoutSource.Play();
     }
     public void Play(AudioClip clip)
 	{
