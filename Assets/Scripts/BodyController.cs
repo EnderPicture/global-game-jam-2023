@@ -36,6 +36,11 @@ public class BodyController : MonoBehaviour
     }
 
     public void disabled() {
+        foreach (BodyPart b in bodyParts) {
+            b.hovered = false;
+            b.selected = false;
+        }
+
         disable = true;
         indexClick = -1;
         currentBodyPart = null;
