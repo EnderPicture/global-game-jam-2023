@@ -20,18 +20,9 @@ public class BodyController : MonoBehaviour
     private Ray _ray;
 
     private bool mouseLDown = false;
-    private bool mouseMoved = false;
     private bool MouseRHit = false;
 
     private BodyPart currentBodyPart;
-
-    private Vector2 startMousePosition = new Vector2();
-    private Vector2 realMouse = new Vector3();
-
-
-    private float rotation = 0;
-    private float startRotation = 0;
-
     private Vector3 oldMousePosition;
     private Vector3 oldPosition;
     private bool disable = false;
@@ -132,9 +123,9 @@ public class BodyController : MonoBehaviour
                 fileName += "_";
                 fileName += 36 * style;
             }
-            Debug.Log(fileName);
+            // Debug.Log(fileName);
             spriteRenderer.sprite = Resources.Load(fileName, typeof(Sprite)) as Sprite;
-            Debug.Log(Resources.Load(fileName, typeof(Sprite)) as Sprite);
+            // Debug.Log(Resources.Load(fileName, typeof(Sprite)) as Sprite);
         }
     }
     // Update is called once per frame

@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 2
@@ -659,6 +663,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 8
@@ -732,6 +740,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 3
@@ -880,7 +892,7 @@ PrefabInstance:
       objectReference: {fileID: 550085402}
     - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: timerLength
-      value: 45
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
@@ -1118,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 550085402}
     - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: timerLength
-      value: 45
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
@@ -1233,7 +1245,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1872164913}
   endCamera: {fileID: 1362748870}
   percent_text: {fileID: 221042319}
-  score_text: {fileID: 865930879}
+  tut: {fileID: 0}
   end: 0
   progressBar: {fileID: 1655127948}
   ParticleSystemLeft: {fileID: 0}
@@ -1351,6 +1363,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 10
@@ -1926,6 +1942,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 4
@@ -2800,7 +2820,7 @@ PrefabInstance:
       objectReference: {fileID: 550085402}
     - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: timerLength
-      value: 45
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
@@ -3014,6 +3034,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 3
@@ -3302,7 +3326,7 @@ PrefabInstance:
       objectReference: {fileID: 550085402}
     - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: timerLength
-      value: 45
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
@@ -3528,6 +3552,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 6
@@ -3601,6 +3629,10 @@ PrefabInstance:
       propertyPath: timerPie
       value: 
       objectReference: {fileID: 550085402}
+    - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
+      propertyPath: timerLength
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356380, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: style
       value: 7
@@ -3781,7 +3813,7 @@ PrefabInstance:
       objectReference: {fileID: 550085402}
     - target: {fileID: 2562041854310100194, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: timerLength
-      value: 45
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 6781766515718356381, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
       propertyPath: m_LocalPosition.x

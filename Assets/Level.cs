@@ -31,6 +31,7 @@ public class Level : MonoBehaviour
             timePassed += Time.deltaTime;
             timerPie.fillAmount = timePassed / timerLength;
             score = letter.getScore();
+            Debug.Log(score);
             if(timePassed > timerLength || Input.GetKeyDown("space")) {
                 body.disabled();
                 letter.enabled = false;

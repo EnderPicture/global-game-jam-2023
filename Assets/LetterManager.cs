@@ -18,7 +18,6 @@ public class LetterManager : MonoBehaviour
     private float NumberOfMinorColliders = 0;
     private float Score = 0;
     private float old = 0;
-    private bool IsLetterComplete = false;
     // Start is called before the first frame update
     void Start()
     {

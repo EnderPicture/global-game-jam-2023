@@ -17,7 +17,7 @@ public class start : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // Animation
-            // Invoke("loadScene", 1f);
+            // Invoke("ladScene", 1f);
             loadScene();
         }
     }
