@@ -63,25 +63,12 @@ public class BodyController : MonoBehaviour
 
             else if (Input.GetMouseButtonDown(1))
             {
-                _ray = new Ray(
-                    Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                    Camera.main.transform.forward);
-
-                if (Physics.Raycast(_ray, out _hit, 1000f))
-                {
-                    _hit.transform.gameObject.GetComponent<BodyPart>();
-                    int i = 0;
-                    foreach (BodyPart bp in bodyParts)
-                    {
-                        if (_hit.transform.gameObject.GetComponent<BodyPart>() == bp)
-                        {
-                            MouseRHit = true;
-                            oldMousePosition = Input.mousePosition;
-                            oldPosition = transform.position;
-                        }
-                        i++;
-                    }
+                if(indexHovered != -1) {
+                    MouseRHit = true;
+                    oldMousePosition = Input.mousePosition;
+                    oldPosition = transform.position;
                 }
+                
             }
         }
     }
@@ -169,7 +156,7 @@ public class BodyController : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 if(currentBodyPart != null) {
-                    MusicManager.Instance.Play(click);
+                    MusicManager.Instance.Play(click,.5f);
                 }
                 
                 indexClick = -1;
@@ -196,7 +183,10 @@ public class BodyController : MonoBehaviour
 
             if (Input.GetMouseButtonUp(1))
             {
-                MouseRHit = false;
+                if(MouseRHit) {
+                    MusicManager.Instance.Play(click2, .3f);
+                    MouseRHit = false;
+                }
             }
         }
         

@@ -29,8 +29,13 @@ public class MusicManager : MonoBehaviour
     }
     public void Play(AudioClip clip)
 	{
+        EffectsSource.volume = 1;
 		EffectsSource.clip = clip;
 		EffectsSource.Play();
+	}
+    public void Play(AudioClip clip, float vol)
+	{
+		EffectsSource.PlayOneShot(clip, vol);
 	}
 	// Play a single clip through the music source.
 	public void PlayMusic(AudioClip clip)
