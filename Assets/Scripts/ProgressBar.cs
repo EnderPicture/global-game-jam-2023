@@ -29,10 +29,10 @@ public class ProgressBar : MonoBehaviour
     public void SetProgress(int progress)
     {
         progressBoxes[order[progress] - 1].GetChild(0).gameObject.SetActive(true);
-        progressBoxes[order[progress] - 1].GetComponent<pulse>().enabled = true;
+        progressBoxes[order[progress] - 1].GetComponent<Pulse>().enabled = true;
         if (progress - 1 >= 0)
         {
-            progressBoxes[order[progress - 1] - 1].GetComponent<pulse>().kill();
+            progressBoxes[order[progress - 1] - 1].GetComponent<Pulse>().kill();
         }
     }
 }

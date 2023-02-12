@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class pulse : MonoBehaviour
+public class Pulse : MonoBehaviour
 {
     private Tween t;
     public Vector3 toVec = new Vector3(.35f, .35f, .35f);
