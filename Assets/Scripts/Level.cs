@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
 {
     private LetterManager letter;
     public Image timerPie;
+    public GameObject timerRotate;
     public float timerLength = 30;
     private float timePassed = 0;
     private bool finished = false;

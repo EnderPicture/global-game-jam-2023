@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toVec: {x: 1.1, y: 1.1, z: 1.1}
-  speed: 0.3
+  speed: 0.25
 --- !u!1 &7749102091225524212
 GameObject:
   m_ObjectHideFlags: 0
