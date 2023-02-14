@@ -171,7 +171,8 @@ MonoBehaviour:
   ParentCollider: {fileID: 3440159701068156503}
   ParentBadCollider: {fileID: 4640044140509125241}
   ParentMinorCollider: {fileID: 2350993722073382326}
-  ParentGigaBadCollidser: {fileID: 1400479535039021359}
+  ParentGigaBadCollider: {fileID: 1400479535039021359}
+  text: {fileID: 9222665426931747195}
 --- !u!1 &6281332621608607013
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,8 +282,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3048461492
-  m_fontColor: {r: 0.7058824, g: 0.83137256, b: 0.7019608, a: 0.70980394}
+    rgba: 3036741432
+  m_fontColor: {r: 0.22071671, g: 1, b: 0, a: 0.70980394}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

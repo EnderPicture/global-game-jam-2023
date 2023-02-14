@@ -11,12 +11,13 @@ public class LetterManager : MonoBehaviour
     public Transform ParentCollider;
     public Transform ParentBadCollider;
     public Transform ParentMinorCollider;
-    public Transform ParentGigaBadCollidser;
+    public Transform ParentGigaBadCollider;
+    public TMPro.TextMeshPro text; 
     private float NumberOfHitColliders = 0;
     private float NumberOfGigaBadColliders = 0;
     private float NumberOfBadColliders = 0;
     private float NumberOfMinorColliders = 0;
-    private float Score = 0;
+    private float score = 0;
     private float old = 0;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class LetterManager : MonoBehaviour
 
             ColliderList.Add(child.GetComponent<ColliderScript>());
         };
-        foreach(Transform child in ParentGigaBadCollidser) {
+        foreach(Transform child in ParentGigaBadCollider) {
             GigaBadColliderList.Add(child.GetComponent<ColliderScript>());
         };
         foreach(Transform child in ParentBadCollider) {
@@ -69,15 +70,19 @@ public class LetterManager : MonoBehaviour
         // minorNodes/total minor nodes * 30% +
         // Massive penalty (-25%) + 
         // minor penalty (-2%)
-        old = Score;
-        Score = (NumberOfHitColliders/ColliderList.Count * 0.70f) 
+        old = score;
+        score = (NumberOfHitColliders/ColliderList.Count * 0.70f) 
                 + (NumberOfMinorColliders/MinorColliders.Count * 0.30f) 
                 - (NumberOfGigaBadColliders * 0.25f)
                 - (NumberOfBadColliders * 0.02f);
-        Score = Mathf.Max(Score,0);
+        score = Mathf.Max(score,0);
+        if(score == 1) {
+            text.color = new Color32(37, 255, 0, 181);
+        }
+        text.color = Color.Lerp(new Color32(221, 32, 9, 181), new Color32(130, 222, 116, 181), score);
     }
 
     public float getScore() {
-        return Score;
+        return score;
     }
 }

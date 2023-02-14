@@ -1387,6 +1387,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.87
       objectReference: {fileID: 0}
+    - target: {fileID: 1011074494440327434, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
+      propertyPath: ParentGigaBadCollider
+      value: 
+      objectReference: {fileID: 6367526321054090618}
     - target: {fileID: 1197063701735855399, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -2.15
@@ -1533,19 +1537,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9222665426931747195, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.700178
+      value: 0.03529412
       objectReference: {fileID: 0}
     - target: {fileID: 9222665426931747195, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.8301887
+      value: 0.03529412
       objectReference: {fileID: 0}
     - target: {fileID: 9222665426931747195, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
       propertyPath: m_fontColor.r
-      value: 0.70664257
+      value: 0.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 9222665426931747195, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 2327041204
+      value: 3037268445
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5bc43cc9901e7848a686027713978ba, type: 3}
