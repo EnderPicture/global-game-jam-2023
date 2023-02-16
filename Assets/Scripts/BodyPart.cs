@@ -13,12 +13,14 @@ public class BodyPart : MonoBehaviour
     public bool hovered;
 
     public SpriteRenderer sprite;
+    private Renderer r;
 
     public int index;
 
     void Start()
     {
         rotation = transform.localRotation.eulerAngles.z;
+        r = sprite.GetComponent<Renderer>();
     }
 
 
@@ -41,5 +43,8 @@ public class BodyPart : MonoBehaviour
         // }
         // transform.localRotation = Quaternion.Euler(0, 0, rotation);
 
+    }
+    public int getSortingOrder() {
+        return r.sortingOrder;
     }
 }

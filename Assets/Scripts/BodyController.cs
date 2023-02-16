@@ -105,18 +105,32 @@ public class BodyController : MonoBehaviour
             Camera.main.ScreenToWorldPoint(Input.mousePosition),
             Camera.main.transform.forward);
         int layerMask = 1 << 7;
-        if (Physics.Raycast(_ray, out _hit, 1000f, layerMask))
+        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask);
+        Debug.Log(hits);
+        if (hits.Length > 0) 
         {
-            _hit.transform.gameObject.GetComponent<BodyPart>();
+           
+            int highestSortingLayer = -999;
+            BodyPart mostVisibleBodyPart = null;
+            foreach(RaycastHit rayHit in hits) {
+                BodyPart bphit = rayHit.transform.gameObject.GetComponent<BodyPart>();
+                if(bphit.getSortingOrder() > highestSortingLayer) {
+                    highestSortingLayer = bphit.getSortingOrder();
+                    mostVisibleBodyPart = bphit;
+                }
+                
+            }
             int i = 0;
             foreach (BodyPart bp in bodyParts)
             {
-                if (_hit.transform.gameObject.GetComponent<BodyPart>() == bp)
+                if (mostVisibleBodyPart == bp)
                 {
                     indexHovered = i;
+                    
                 }
                 i++;
             }
+            
         }
     }
 
