@@ -4850,10 +4850,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6639701355265494675, guid: 40286717720836a49b0b17243b83a558, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 60a9af5f25000a14a93b0748100f08c0, type: 3}
     - target: {fileID: 7115807757940346686, guid: 40286717720836a49b0b17243b83a558, type: 3}
       propertyPath: CheerMusic
       value: 
-      objectReference: {fileID: 8300000, guid: a33d41b79868c774abeceb7fd847c7c6, type: 3}
+      objectReference: {fileID: 8300000, guid: 60a9af5f25000a14a93b0748100f08c0, type: 3}
     - target: {fileID: 7115807757940346686, guid: 40286717720836a49b0b17243b83a558, type: 3}
       propertyPath: ShoutSource
       value: 

@@ -21,6 +21,7 @@ public class BodyController : MonoBehaviour
 
     private bool mouseLDown = false;
     private bool MouseRHit = false;
+    private bool fingerDrag = false;
 
     private BodyPart currentBodyPart;
     private Vector3 oldMousePosition;
@@ -53,8 +54,9 @@ public class BodyController : MonoBehaviour
     {
         if(!disable) {
             Vector2 realMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
             if (Input.touchCount < 2) {
-
+                fingerDrag = false;
                 if (Input.GetMouseButtonDown(0))
                 {
 
@@ -72,27 +74,13 @@ public class BodyController : MonoBehaviour
                     
                 }
             } else {
-                Touch touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began) {
-                    MouseRHit = true;
+                if (!fingerDrag) {
                     oldMousePosition = Input.mousePosition;
                     oldPosition = transform.position;
+                    fingerDrag = true; 
                 }
-
-                if (touch.phase == TouchPhase.Moved && MouseRHit)
-                {
-                    Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
-                    Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Vector3 delta = newMouse - oldMouse;
-                    this.transform.position = oldPosition + delta;
-                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                }     
-                if (touch.phase == TouchPhase.Ended) {
-                    MouseRHit = false;
-                    oldMousePosition = Input.mousePosition;
-                    oldPosition = transform.position;
-                }           
+                
+                
             }
 
         }
@@ -138,6 +126,12 @@ public class BodyController : MonoBehaviour
     {
         if (MouseRHit && !disable)
         {
+            Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
+            Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 delta = newMouse - oldMouse;
+            this.transform.position = oldPosition + delta;
+        }
+        else if(fingerDrag && !disable) {
             Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
             Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 delta = newMouse - oldMouse;
