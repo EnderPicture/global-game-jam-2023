@@ -40,7 +40,7 @@ public class Level : MonoBehaviour
                 letter.enabled = false;
                 active = false;
                 finished = true;
-                transform.DOMove(new Vector3(-100,0,0), 1);
+                transform.DOMove(new Vector3(-100,-1.5f,0), 1);
                 Invoke("setupEnd", 1.05f);
                 // transform.position = new Vector3(-100,0,0);
             }
@@ -64,7 +64,7 @@ public class Level : MonoBehaviour
 
     public void activate() {
         active = true;
-        transform.DOMove(new Vector3(0,0,0), 1);
+        transform.DOMove(new Vector3(0,-1.5f,0), 1);
         // transform.position = new Vector3(0,0,0);
     }
 }

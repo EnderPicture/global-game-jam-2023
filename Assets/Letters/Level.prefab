@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b3bb527c9e8b04184c3819a9f53ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 0}
   timerPie: {fileID: 0}
+  timerRotate: {fileID: 0}
   timerLength: 30
   lastX: 500
   lastY: 500
@@ -71,7 +71,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4031324594497898630, guid: ab905bd33083a43d097db51628146203, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4031324594497898630, guid: ab905bd33083a43d097db51628146203, type: 3}
       propertyPath: m_LocalPosition.z
