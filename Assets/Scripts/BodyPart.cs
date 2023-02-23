@@ -11,6 +11,7 @@ public class BodyPart : MonoBehaviour
 
     public bool selected;
     public bool hovered;
+    public bool tautable = true;
 
     public SpriteRenderer sprite;
     private Renderer r;

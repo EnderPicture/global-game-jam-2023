@@ -30,20 +30,25 @@ public class Level : MonoBehaviour
             timePassed += Time.deltaTime;
             timerPie.fillAmount = timePassed / timerLength;
             score = letter.getScore();
-            Debug.Log(score);
+            // Debug.Log(score);
             if(timePassed > timerLength || (Input.GetKeyDown("space") && timePassed > .5f)) {
-                BodyController[] body = GetComponentsInChildren<BodyController>();
-                foreach (BodyController b in body)
-                {
-                    b.disabled();
-                }
-                letter.enabled = false;
-                active = false;
-                finished = true;
-                transform.DOMove(new Vector3(-100,-1.5f,0), 1);
-                Invoke("setupEnd", 1.05f);
-                // transform.position = new Vector3(-100,0,0);
+                finishLevel();
             }
+        }
+    }
+
+    public void finishLevel() {
+        if(active){
+            BodyController[] body = GetComponentsInChildren<BodyController>();
+            foreach (BodyController b in body)
+            {
+                b.disabled();
+            }
+            letter.enabled = false;
+            active = false;
+            finished = true;
+            transform.DOMove(new Vector3(-100,-1.5f,0), 1);
+            Invoke("setupEnd", 1.05f);
         }
     }
 

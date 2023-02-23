@@ -24,6 +24,9 @@ public class BodyController : MonoBehaviour
     private bool fingerDrag = false;
 
     private BodyPart currentBodyPart;
+    private float startAngle;
+    private Quaternion startRotation;
+    private float startMagnitude;
     private Vector3 oldMousePosition;
     private Vector3 oldPosition;
     private bool disable = false;
@@ -61,6 +64,15 @@ public class BodyController : MonoBehaviour
                 {
 
                     indexClick = indexHovered;
+                    if(indexClick != -1) {
+                        Vector2 target;
+                        Vector3 bodyPart = Camera.main.WorldToScreenPoint(bodyParts[indexClick].transform.position);
+                        target.x = Input.mousePosition.x - bodyPart.x;
+                        target.y = Input.mousePosition.y - bodyPart.y;
+                        startAngle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+                        startRotation = bodyParts[indexClick].transform.rotation;
+                        startMagnitude = target.magnitude;
+                    }
 
                 }
 
@@ -94,7 +106,7 @@ public class BodyController : MonoBehaviour
             Camera.main.transform.forward);
         int layerMask = 1 << 7;
         RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask);
-        Debug.Log(hits);
+        // Debug.Log(hits);
         if (hits.Length > 0) 
         {
            
@@ -199,19 +211,26 @@ public class BodyController : MonoBehaviour
 
             if (mouseLDown && currentBodyPart)
             {
-                Vector3 target;
-                // mouse_pos.z = 5.23; //The distance between the camera and object
+                Vector2 target;
                 Vector3 bodyPart = Camera.main.WorldToScreenPoint(currentBodyPart.transform.position);
                 target.x = Input.mousePosition.x - bodyPart.x;
                 target.y = Input.mousePosition.y - bodyPart.y;
-                float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
-                // currentBodyPart.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90));
-                currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, Quaternion.Euler(new Vector3(0, 0, angle + 90)), 500 * Time.deltaTime);
-                
-                // var direction = (Input.mousePosition - currentBodyPart.transform.position).normalized;
-                // direction = new Vector3(direction.x, direction.y, 0);
-                // var targetRotation = Quaternion.LookRotation(direction);
-                // currentBodyPart.transform.rotation = Quaternion.RotateTowards(currentBodyPart.transform.rotation, targetRotation, 50 * Time.deltaTime);
+                float angle = (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg);
+                float diffAngle = angle - startAngle;
+                float speedOfRotation = 700;
+                if(target.magnitude > 10) {
+                    
+                    Quaternion diff = startRotation * Quaternion.Euler(new Vector3(0, 0, diffAngle));
+                    Quaternion rope = Quaternion.Euler(new Vector3(0, 0, angle+90));
+
+                    Quaternion goal = diff;
+                    if(currentBodyPart.tautable) {
+                        float taut = Mathf.Pow(Mathf.Clamp01((target.magnitude - startMagnitude)/120), 1.7f);
+                        goal = Quaternion.Slerp(diff, rope , taut);
+                    }
+                    currentBodyPart.transform.rotation =  Quaternion.RotateTowards(currentBodyPart.transform.rotation, goal, speedOfRotation * Time.deltaTime);
+
+                }
             }
 
             if (Input.GetMouseButtonUp(1))
@@ -221,7 +240,6 @@ public class BodyController : MonoBehaviour
                     MouseRHit = false;
                 }
             }
-            // if ()
         }
         
 
