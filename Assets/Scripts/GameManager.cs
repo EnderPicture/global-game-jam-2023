@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private double sum = 0;
 
     public ProgressBar progressBar;
+    public GameObject skipButton;
 
     private bool applaused = false;
     void Start()
@@ -36,6 +37,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButtonDown(0)) {
+            Ray _ray = new Ray(
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                Camera.main.transform.forward);
+            int layerMask = 1 << 5; //ui
+            bool hit = Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask); 
+            if (hit) {
+                levels[levelIndex].finishLevel();
+            }
+        }
         if (levels.Length <= levelIndex || end)
         {
             end = true;
@@ -48,14 +59,6 @@ public class GameManager : MonoBehaviour
             int percent = (int)(finalScore * 100);
             percent_text.text = percent + "%";
             grade.setGrade(finalScore*100);
-
-            // Sequence mySequence = DOTween.Sequence();
-            // // mySequence.Append(endCamera.transform.DOMove(new Vector3(-72.8f, 10.2f, -10), 1))
-            // // .Append(endCamera.transform.DOMove(new Vector3(-114.8f, 11.9f, -10), .4f))
-            // // .Append(endCamera.transform.DOMove(new Vector3(-87.6f, 11.9f, -10), .8f))
-            // // .Append(endCamera.transform.DOMove(new Vector3(-100f, -.07f, -10), .3f))
-            // // .Append(DOTween.To(()=> endCamera.orthographicSize, x=> endCamera.orthographicSize = x, 20, .8f));
-            // mySequence.Play();
 
             //Play Audio
             if (!applaused)
