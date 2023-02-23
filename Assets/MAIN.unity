@@ -1354,6 +1354,7 @@ MonoBehaviour:
   grade: {fileID: 1870814151}
   end: 0
   progressBar: {fileID: 156412041}
+  skipButton: {fileID: 0}
   ParticleSystemLeft: {fileID: 1161886794}
   ParticleSystemRight: {fileID: 1524799505}
   endingAudio: {fileID: 8300000, guid: 39e7184832e59cf4d98d1f62f2e82be8, type: 3}
@@ -2087,6 +2088,10 @@ PrefabInstance:
       value: up particleR
       objectReference: {fileID: 0}
     - target: {fileID: 1536897135176136455, guid: 5723e8dcb272c44f982a2986edc46121, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536897135176136455, guid: 5723e8dcb272c44f982a2986edc46121, type: 3}
       propertyPath: m_TagString
       value: particle
       objectReference: {fileID: 0}
@@ -2136,8 +2141,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 26%
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: afa0fed242da4b849a33c857266dc5f8, type: 2}
-  m_sharedMaterial: {fileID: -109594528598236610, guid: afa0fed242da4b849a33c857266dc5f8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 88d9a674fae962243a5c2581d6d1953f, type: 2}
+  m_sharedMaterial: {fileID: -382976134167268262, guid: 88d9a674fae962243a5c2581d6d1953f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2226,7 +2231,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -109594528598236610, guid: afa0fed242da4b849a33c857266dc5f8, type: 2}
+  - {fileID: -382976134167268262, guid: 88d9a674fae962243a5c2581d6d1953f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2280,7 +2285,7 @@ GameObject:
   - component: {fileID: 1060436347}
   - component: {fileID: 1060436346}
   - component: {fileID: 1060436348}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SkipButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
