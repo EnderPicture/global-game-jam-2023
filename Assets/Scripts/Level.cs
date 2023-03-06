@@ -48,8 +48,23 @@ public class Level : MonoBehaviour
             active = false;
             finished = true;
             transform.DOMove(new Vector3(-100,-1.5f,0), 1);
-            Invoke("setupEnd", 1.05f);
+            Invoke("setupEnd", 1.1f);
         }
+    }
+
+    public BodyController closestBody() {
+        BodyController[] body = GetComponentsInChildren<BodyController>();
+        BodyController closest = null;
+        float closestDistance = float.MaxValue;
+        foreach (BodyController b in body)
+        {
+            float distance = Vector3.Distance(Input.mousePosition, Camera.main.WorldToScreenPoint(b.transform.position));
+            if(closestDistance > distance) {
+                closest = b;
+                closestDistance = distance;
+            }
+        }
+        return closest;
     }
 
     public float getScore() {
@@ -69,7 +84,12 @@ public class Level : MonoBehaviour
 
     public void activate() {
         active = true;
+        BodyController[] body = GetComponentsInChildren<BodyController>();
+        foreach (BodyController b in body)
+        {
+            b.active();
+        }
+        letter.active();
         transform.DOMove(new Vector3(0,-1.5f,0), 1);
-        // transform.position = new Vector3(0,0,0);
     }
 }

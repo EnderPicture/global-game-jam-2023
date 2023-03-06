@@ -7,17 +7,9 @@ public class BodyController : MonoBehaviour
     [Range(0, 10)]
     public int style;
     public SpriteRenderer[] sprites;
-
     public BodyPart[] bodyParts;
-
     private int indexClick = -1;
     private int indexHovered = -1;
-
-    private float lastAxisR;
-    private float lastAxisL;
-
-    private RaycastHit _hit;
-    private Ray _ray;
 
     private bool mouseLDown = false;
     private bool MouseRHit = false;
@@ -29,7 +21,7 @@ public class BodyController : MonoBehaviour
     private float startMagnitude;
     private Vector3 oldMousePosition;
     private Vector3 oldPosition;
-    private bool disable = false;
+    private bool disable = true;
 
     public AudioClip click;
     public AudioClip click2;
@@ -37,6 +29,10 @@ public class BodyController : MonoBehaviour
     void Start()
     {
         SetStyle();
+    }
+
+    public void active() {
+        disable = false;
     }
 
     public void disabled() {
@@ -62,7 +58,6 @@ public class BodyController : MonoBehaviour
                 fingerDrag = false;
                 if (Input.GetMouseButtonDown(0))
                 {
-
                     indexClick = indexHovered;
                     if(indexClick != -1) {
                         Vector2 target;
@@ -75,7 +70,6 @@ public class BodyController : MonoBehaviour
                     }
 
                 }
-
                 else if (Input.GetMouseButtonDown(1))
                 {
                     if(indexHovered != -1) {
@@ -83,16 +77,15 @@ public class BodyController : MonoBehaviour
                         oldMousePosition = Input.mousePosition;
                         oldPosition = transform.position;
                     } 
-                    
                 }
             } else {
+                indexClick = -1;
                 if (!fingerDrag) {
                     oldMousePosition = Input.mousePosition;
                     oldPosition = transform.position;
-                    fingerDrag = true; 
+                    fingerDrag = true;
+                    
                 }
-                
-                
             }
 
         }
@@ -101,7 +94,7 @@ public class BodyController : MonoBehaviour
     void Hover()
     {
         indexHovered = -1;
-        _ray = new Ray(
+        Ray _ray = new Ray(
             Camera.main.ScreenToWorldPoint(Input.mousePosition),
             Camera.main.transform.forward);
         int layerMask = 1 << 7;
@@ -109,7 +102,6 @@ public class BodyController : MonoBehaviour
         // Debug.Log(hits);
         if (hits.Length > 0) 
         {
-           
             int highestSortingLayer = -999;
             BodyPart mostVisibleBodyPart = null;
             foreach(RaycastHit rayHit in hits) {
@@ -118,7 +110,6 @@ public class BodyController : MonoBehaviour
                     highestSortingLayer = bphit.getSortingOrder();
                     mostVisibleBodyPart = bphit;
                 }
-                
             }
             int i = 0;
             foreach (BodyPart bp in bodyParts)
@@ -126,11 +117,9 @@ public class BodyController : MonoBehaviour
                 if (mostVisibleBodyPart == bp)
                 {
                     indexHovered = i;
-                    
                 }
                 i++;
             }
-            
         }
     }
 
@@ -144,10 +133,14 @@ public class BodyController : MonoBehaviour
             this.transform.position = oldPosition + delta;
         }
         else if(fingerDrag && !disable) {
-            Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
-            Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 delta = newMouse - oldMouse;
-            this.transform.position = oldPosition + delta;
+            if (this == GetComponentInParent<Level>().closestBody()) {
+                Vector3 oldMouse = Camera.main.ScreenToWorldPoint(oldMousePosition);
+                Vector3 newMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 delta = newMouse - oldMouse;
+                this.transform.position = oldPosition + delta;
+            } else {
+                fingerDrag = false;
+            }
         }
     }
 
@@ -168,9 +161,9 @@ public class BodyController : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-        Hover();
+    {   
         if(!disable) {
+            Hover();
             Clicked();
             handleDrag();
             foreach (BodyPart bp in bodyParts)
@@ -178,17 +171,19 @@ public class BodyController : MonoBehaviour
                 bp.selected = false;
                 bp.hovered = false;
             }
-            if (indexHovered != -1)
-            {
-                bodyParts[indexHovered].hovered = true;
-            }
+            
             if (indexClick != -1)
             {
                 bodyParts[indexClick].selected = true;
+                bodyParts[indexClick].hovered = true;
                 currentBodyPart = bodyParts[indexClick];
             }
             else
             {
+                if (indexHovered != -1)
+                {
+                    bodyParts[indexHovered].hovered = true;
+                }
                 currentBodyPart = null;
             }
 
@@ -221,11 +216,12 @@ public class BodyController : MonoBehaviour
                 if(target.magnitude > 10) {
                     
                     Quaternion diff = startRotation * Quaternion.Euler(new Vector3(0, 0, diffAngle));
-                    Quaternion rope = Quaternion.Euler(new Vector3(0, 0, angle+90));
+                    Quaternion rope = Quaternion.Euler(new Vector3(0, 0, angle+90+currentBodyPart.rotationOffset));
 
                     Quaternion goal = diff;
                     if(currentBodyPart.tautable) {
                         float taut = Mathf.Pow(Mathf.Clamp01((target.magnitude - startMagnitude)/120), 1.7f);
+                        // Debug.Log(taut);
                         goal = Quaternion.Slerp(diff, rope , taut);
                     }
                     currentBodyPart.transform.rotation =  Quaternion.RotateTowards(currentBodyPart.transform.rotation, goal, speedOfRotation * Time.deltaTime);

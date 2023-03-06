@@ -5,8 +5,7 @@ using UnityEngine;
 public class BodyPart : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float rotation = 0;
-
+    public float rotationOffset = 0;
     public float speedMultiplier;
 
     public bool selected;
@@ -20,7 +19,7 @@ public class BodyPart : MonoBehaviour
 
     void Start()
     {
-        rotation = transform.localRotation.eulerAngles.z;
+        // rotationOffset = transform.localRotation.eulerAngles.z;
         r = sprite.GetComponent<Renderer>();
     }
 
