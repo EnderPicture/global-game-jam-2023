@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15d8e249f5664b87bbd16eaa89b3f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: 0
+  rotationOffset: 0
   speedMultiplier: 5
   selected: 0
   hovered: 0
+  tautable: 1
   sprite: {fileID: 292851276506242158}
   index: 0
 --- !u!136 &2357935651727803180
@@ -159,8 +160,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1975822321914804738}
-  m_Layer: 7
-  m_Name: GameObject
+  m_Layer: 8
+  m_Name: Pivot/MobileClick Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LetterManager : MonoBehaviour
 {  
-    public List<ColliderScript> GigaBadColliderList;
-    public List<ColliderScript> ColliderList;
-    public List<ColliderScript> BadCollidersList;
-    public List<ColliderScript> MinorColliders;
+    private List<ColliderScript> GigaBadColliderList = new List<ColliderScript>();
+    private List<ColliderScript> ColliderList = new List<ColliderScript>();
+    private List<ColliderScript> BadCollidersList = new List<ColliderScript>();
+    private List<ColliderScript> MinorColliders = new List<ColliderScript>();
     public Transform ParentCollider;
     public Transform ParentBadCollider;
     public Transform ParentMinorCollider;
@@ -24,17 +24,24 @@ public class LetterManager : MonoBehaviour
     void Start()
     {
         foreach(Transform child in ParentCollider) {
-
-            ColliderList.Add(child.GetComponent<ColliderScript>());
+            ColliderScript collider = child.GetComponent<ColliderScript>();
+            ColliderList.Add(collider);
+            collider.enabled = false;
         };
         foreach(Transform child in ParentGigaBadCollider) {
-            GigaBadColliderList.Add(child.GetComponent<ColliderScript>());
+            ColliderScript collider = child.GetComponent<ColliderScript>();
+            GigaBadColliderList.Add(collider);
+            collider.enabled = false;
         };
         foreach(Transform child in ParentBadCollider) {
-            BadCollidersList.Add(child.GetComponent<ColliderScript>());
+            ColliderScript collider = child.GetComponent<ColliderScript>();
+            BadCollidersList.Add(collider);
+            collider.enabled = false;
         };
         foreach(Transform child in ParentMinorCollider) {
-            MinorColliders.Add(child.GetComponent<ColliderScript>());
+            ColliderScript collider = child.GetComponent<ColliderScript>();
+            MinorColliders.Add(collider);
+            collider.enabled = false;
         };
     }
 
@@ -81,12 +88,25 @@ public class LetterManager : MonoBehaviour
             if(score == 1) {
                 text.color = new Color32(37, 255, 0, 181);
             }
+            Debug.Log(score);
             text.color = Color.Lerp(new Color32(221, 32, 9, 181), new Color32(130, 222, 116, 181), score);
         }
     }
 
     public void active() {
         disabled = false;
+        foreach(ColliderScript child in ColliderList) {
+            child.enabled = true;
+        };
+        foreach(ColliderScript child in GigaBadColliderList) {
+            child.enabled = true;
+        };
+        foreach(ColliderScript child in BadCollidersList) {
+            child.enabled = true;
+        };
+        foreach(ColliderScript child in MinorColliders) {
+            child.enabled = true;
+        };
     }
     
     public float getScore() {

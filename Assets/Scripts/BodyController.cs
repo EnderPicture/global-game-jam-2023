@@ -59,6 +59,36 @@ public class BodyController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     indexClick = indexHovered;
+                    if (indexClick == -1) {
+                        Ray _ray = new Ray(
+                            Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                            Camera.main.transform.forward);
+                        int layerMask = 1 << 8; //mobile click
+                        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask);
+                        if (hits.Length > 0) 
+                        {
+                            int highestSortingLayer = -999;
+                            BodyPart mostVisibleBodyPart = null;
+                            foreach(RaycastHit rayHit in hits) {
+                                BodyPart bphit = rayHit.transform.gameObject.GetComponentInParent<BodyPart>();
+                                if(bphit.getSortingOrder() > highestSortingLayer) {
+                                    highestSortingLayer = bphit.getSortingOrder();
+                                    mostVisibleBodyPart = bphit;
+                                }
+                            }
+                            int i = 0;
+                            foreach (BodyPart bp in bodyParts)
+                            {
+                                if (mostVisibleBodyPart == bp)
+                                {
+                                    indexHovered = i;
+                                    indexClick = i;
+                                }
+                                i++;
+                            }
+                        }
+                    }
+
                     if(indexClick != -1) {
                         Vector2 target;
                         Vector3 bodyPart = Camera.main.WorldToScreenPoint(bodyParts[indexClick].transform.position);
@@ -66,8 +96,8 @@ public class BodyController : MonoBehaviour
                         target.y = Input.mousePosition.y - bodyPart.y;
                         startAngle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
                         startRotation = bodyParts[indexClick].transform.rotation;
-                        startMagnitude = target.magnitude;
-                    }
+                        startMagnitude = target.magnitude; 
+                    } 
 
                 }
                 else if (Input.GetMouseButtonDown(1))
@@ -92,35 +122,37 @@ public class BodyController : MonoBehaviour
     }
 
     void Hover()
-    {
-        indexHovered = -1;
-        Ray _ray = new Ray(
-            Camera.main.ScreenToWorldPoint(Input.mousePosition),
-            Camera.main.transform.forward);
-        int layerMask = 1 << 7;
-        RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask);
-        // Debug.Log(hits);
-        if (hits.Length > 0) 
         {
-            int highestSortingLayer = -999;
-            BodyPart mostVisibleBodyPart = null;
-            foreach(RaycastHit rayHit in hits) {
-                BodyPart bphit = rayHit.transform.gameObject.GetComponent<BodyPart>();
-                if(bphit.getSortingOrder() > highestSortingLayer) {
-                    highestSortingLayer = bphit.getSortingOrder();
-                    mostVisibleBodyPart = bphit;
-                }
-            }
-            int i = 0;
-            foreach (BodyPart bp in bodyParts)
-            {
-                if (mostVisibleBodyPart == bp)
+            if (indexClick == -1) {
+                indexHovered = -1;
+                Ray _ray = new Ray(
+                    Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                    Camera.main.transform.forward);
+                int layerMask = 1 << 7;
+                RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask);
+                // Debug.Log(hits);
+                if (hits.Length > 0) 
                 {
-                    indexHovered = i;
+                    int highestSortingLayer = -999;
+                    BodyPart mostVisibleBodyPart = null;
+                    foreach(RaycastHit rayHit in hits) {
+                        BodyPart bphit = rayHit.transform.gameObject.GetComponent<BodyPart>();
+                        if(bphit.getSortingOrder() > highestSortingLayer) {
+                            highestSortingLayer = bphit.getSortingOrder();
+                            mostVisibleBodyPart = bphit;
+                        }
+                    }
+                    int i = 0;
+                    foreach (BodyPart bp in bodyParts)
+                    {
+                        if (mostVisibleBodyPart == bp)
+                        {
+                            indexHovered = i;
+                        }
+                        i++;
+                    }
                 }
-                i++;
             }
-        }
     }
 
     void handleDrag()

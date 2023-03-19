@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColliderScript : MonoBehaviour
 {
-    private bool HasHitBody = false;
+    private int HasHitBody = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,24 +20,19 @@ public class ColliderScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(!other.isTrigger) {
-            HasHitBody = true;
+            HasHitBody++;
         }        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        HasHitBody = false;
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
         if(!other.isTrigger) {
-            HasHitBody = true;
-        }
+            HasHitBody--;
+        }        
     }
 
     public bool HasCollided() {
-        return HasHitBody;
+        return HasHitBody > 0;
     }
 
 }
