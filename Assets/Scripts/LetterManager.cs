@@ -88,7 +88,7 @@ public class LetterManager : MonoBehaviour
             if(score == 1) {
                 text.color = new Color32(37, 255, 0, 181);
             }
-            Debug.Log(score);
+            // Debug.Log(score);
             text.color = Color.Lerp(new Color32(221, 32, 9, 181), new Color32(130, 222, 116, 181), score);
         }
     }

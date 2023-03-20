@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class BodyController : MonoBehaviour
@@ -48,6 +49,16 @@ public class BodyController : MonoBehaviour
         MouseRHit = false;
     }
 
+     [DllImport("__Internal")]
+     private static extern bool IsMobile();
+ 
+     public bool isMobile()
+     {
+         #if !UNITY_EDITOR && UNITY_WEBGL
+             return IsMobile();
+         #endif
+         return false;
+     }
 
     void Clicked()
     {
@@ -59,7 +70,7 @@ public class BodyController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     indexClick = indexHovered;
-                    if (indexClick == -1) {
+                    if (indexClick == -1 && isMobile()) {
                         Ray _ray = new Ray(
                             Camera.main.ScreenToWorldPoint(Input.mousePosition),
                             Camera.main.transform.forward);

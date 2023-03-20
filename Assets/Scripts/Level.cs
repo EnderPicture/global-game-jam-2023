@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 {
     private LetterManager letter;
     public Image timerPie;
-    public GameObject timerRotate;
+    public TimerAnimation timerAnimation;
     public float timerLength = 30;
     private float timePassed = 0;
     private bool finished = false;
@@ -31,7 +31,7 @@ public class Level : MonoBehaviour
             timerPie.fillAmount = timePassed / timerLength;
             score = letter.getScore();
             // Debug.Log(score);
-            if(timePassed > timerLength || (Input.GetKeyDown("space") && timePassed > .5f)) {
+            if(timePassed > timerLength || ((Input.GetKeyDown("space") ||(Input.GetKeyDown(KeyCode.Space))) && timePassed > .5f)) {
                 finishLevel();
             }
         }
@@ -43,6 +43,9 @@ public class Level : MonoBehaviour
             foreach (BodyController b in body)
             {
                 b.disabled();
+            }
+            if(timerAnimation) {
+                timerAnimation.animate();
             }
             letter.enabled = false;
             active = false;
