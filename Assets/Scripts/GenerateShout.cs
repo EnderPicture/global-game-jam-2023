@@ -8,6 +8,7 @@ public class GenerateShout : MonoBehaviour
 {   
     public List<SpriteRenderer> ShoutOutList;
     public List<AudioClip> ReinaNoise;
+    private int modePrev = -1;
 
     //Index 0 is the big speech bubble
     // Start is called before the first frame update
@@ -23,12 +24,14 @@ public class GenerateShout : MonoBehaviour
     }
 
     private void disable(int mode) {
-        ShoutOutList[0].gameObject.SetActive(false);
         ShoutOutList[mode].gameObject.SetActive(false);
     }
 
     public void shout(int mode) {
-
+        ShoutOutList[0].DOKill();
+        if(modePrev != -1) {
+            ShoutOutList[modePrev].gameObject.SetActive(false);
+        }
 
         ShoutOutList[0].gameObject.SetActive(true);
         ShoutOutList[mode].gameObject.SetActive(true);
@@ -38,6 +41,8 @@ public class GenerateShout : MonoBehaviour
         ShoutOutList[0].gameObject.transform.DOShakePosition(1.0f);
         ShoutOutList[mode].gameObject.transform.DOShakePosition(1.0f);
         ShoutOutList[mode].DOFade(0f, 1.0f).OnComplete(() => disable(mode)).SetDelay(1);
+        
+        modePrev = mode;
     }
 
 
