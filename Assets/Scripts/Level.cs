@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     private LetterManager letter;
     public Image timerPie;
     public TimerAnimation timerAnimation;
+    public PerfectPopup perfectPopup;
     public float timerLength = 30;
     private float timePassed = 0;
     private bool finished = false;
@@ -30,6 +31,13 @@ public class Level : MonoBehaviour
             timePassed += Time.deltaTime;
             timerPie.fillAmount = timePassed / timerLength;
             score = letter.getScore();
+            Debug.Log(score);
+            if(score >= .999f && !perfectPopup.isShown()) {
+                perfectPopup.appear();
+            } 
+            else if (score <= .999f && perfectPopup.isShown()){
+                perfectPopup.fade();
+            }
             // Debug.Log(score);
             if(timePassed > timerLength || ((Input.GetKeyDown("space") ||(Input.GetKeyDown(KeyCode.Space))) && timePassed > .5f)) {
                 finishLevel();
@@ -50,8 +58,9 @@ public class Level : MonoBehaviour
             letter.enabled = false;
             active = false;
             finished = true;
-            transform.DOMove(new Vector3(-100,-1.5f,0), 1);
-            Invoke("setupEnd", 1.1f);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(transform.DOMove(new Vector3(-100,-1.5f,0), 1.5f));
+            seq.Append(transform.DOMove(new Vector3(lastX, lastY, 0), .1f));
         }
     }
 

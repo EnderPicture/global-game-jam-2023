@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class GameManager : MonoBehaviour
     private double sum = 0;
 
     public ProgressBar progressBar;
-    public GameObject skipButton;
 
     private bool applaused = false;
     void Start()
@@ -43,8 +43,13 @@ public class GameManager : MonoBehaviour
                 Camera.main.transform.forward);
             int layerMask = 1 << 5; //ui
             bool hit = Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward, 1000f, layerMask); 
-            if (hit) {
-                levels[levelIndex].finishLevel();
+            if (hit) { 
+                if(levels.Length <= levelIndex || end) {
+                    DOTween.KillAll();
+                    SceneManager.LoadScene("MAIN", LoadSceneMode.Single);
+                } else {
+                    levels[levelIndex].finishLevel();
+                }
             }
         }
         if (levels.Length <= levelIndex || end)
