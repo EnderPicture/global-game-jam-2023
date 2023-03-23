@@ -1330,55 +1330,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 652578109702683948, guid: 8a7de5045fc9a374ea7d8f2b327fe8af, type: 3}
   m_PrefabInstance: {fileID: 274072962}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &579642682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 579642684}
-  - component: {fileID: 579642683}
-  m_Layer: 0
-  m_Name: Viginette
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &579642683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579642682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: ea3835bd0a56aa74e84d46ce7e6be39f, type: 2}
---- !u!4 &579642684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579642682}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &580763466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3497786474590453498, guid: a3ed666e87bcc436b913cb98c2b08131, type: 3}
@@ -1611,7 +1562,7 @@ Transform:
   - {fileID: 47807656}
   - {fileID: 915249721}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &685464271
 GameObject:
@@ -1650,7 +1601,7 @@ Transform:
   - {fileID: 1967272051}
   - {fileID: 89010056}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &705921772 stripped
 MonoBehaviour:
@@ -2729,6 +2680,7 @@ GameObject:
   - component: {fileID: 1060436347}
   - component: {fileID: 1060436346}
   - component: {fileID: 1060436348}
+  - component: {fileID: 1060436349}
   m_Layer: 5
   m_Name: SkipButton
   m_TagString: Untagged
@@ -2903,6 +2855,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.13, y: 2.7, z: 0}
   m_Center: {x: -1.77, y: -1.85, z: 0}
+--- !u!114 &1060436349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060436344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d4b652ddaf2314eb460800bff96343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1084856950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2990,7 +2954,7 @@ Transform:
   - {fileID: 580763466}
   - {fileID: 895940492}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1146174933 stripped
 Camera:
@@ -3960,7 +3924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6951809274124959327, guid: 1f2a88d52211c4b7aac82d023079f4d4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6951809274124959327, guid: 1f2a88d52211c4b7aac82d023079f4d4, type: 3}
       propertyPath: m_LocalScale.x
@@ -5009,7 +4973,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1872164915
 MonoBehaviour:
@@ -5556,7 +5520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5127719745267029804, guid: 40286717720836a49b0b17243b83a558, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5127719745267029804, guid: 40286717720836a49b0b17243b83a558, type: 3}
       propertyPath: m_LocalPosition.x
